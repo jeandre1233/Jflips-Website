@@ -1,0 +1,8 @@
+{
+  "name": "Remix: JFLIPS | Premium Cheerleading \u0026 Athletic Performance",
+  "description": "Where Passion Becomes Performance. Premium athletic cheerleading programs, private coaching, and school partnerships delivering confidence, teamwork, and athletic excellence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

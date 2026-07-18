@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* JFLIPS identity — pulled from the actual spring floor, not a SaaS default */
+  --color-ink: #14171c;
+  --color-ink-soft: #2a2e38;
+  --color-mat: #001b5e;
+  --color-mat-deep: #00103b;
+  --color-chalk: #f6f3ea;
+  --color-chalk-dim: #ece7d8;
+  --color-flame: #00a8ff;
+  --color-flame-deep: #008dd6;
+  --color-line: #d8d2c2;
+
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Bricolage Grotesque", "IBM Plex Sans", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-chalk text-ink font-sans antialiased selection:bg-flame selection:text-chalk;
+    scroll-behavior: smooth;
+  }
+}
+
+/* ---- Signature devices: mat-tape tags, hairline rules, halftone texture ---- */
+
+/* Tab label — replaces the generic rounded-full "pill" badge */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  background: var(--color-ink);
+  color: var(--color-chalk);
+  clip-path: polygon(0 0, 100% 0, 94% 100%, 0% 100%);
+}
+.tag-flame { background: var(--color-flame); color: var(--color-chalk); }
+.tag-outline { background: transparent; color: var(--color-ink); border: 1.5px solid var(--color-ink); clip-path: none; }
+.tag-outline-light { background: transparent; color: var(--color-chalk); border: 1.5px solid rgba(246,243,234,0.35); clip-path: none; }
+
+/* Corner-cut card — references a bib / mat-corner rather than a glass panel */
+.cut-corner {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%);
+}
+.cut-corner-sm {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+}
+
+/* Halftone dot field — screen-print texture, stands in for blurred gradient blobs */
+.halftone {
+  background-image: radial-gradient(var(--color-ink) 1px, transparent 1.4px);
+  background-size: 14px 14px;
+}
+.halftone-light {
+  background-image: radial-gradient(rgba(246,243,234,0.5) 1px, transparent 1.4px);
+  background-size: 14px 14px;
+}
+
+/* Scoreboard number treatment */
+.score-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-chalk); }
+::-webkit-scrollbar-thumb { background: var(--color-line); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-mat); }
