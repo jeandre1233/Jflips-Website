@@ -20,8 +20,8 @@ export default function SEO() {
         '@type': 'SportsOrganization',
         'name': 'JFLIPS Athletic Cheerleading and Performance',
         'alternateName': 'JFLIPS',
-        'url': 'https://YOUR-REGISTRATION-LINK', // or APP_URL from env if available
-        'logo': 'https://YOUR-REGISTRATION-LINK/logo.png',
+        'url': window.location.origin,
+        'logo': `${window.location.origin}/logo.png`,
         'description': 'Competitive cheerleading and tumbling coaching organization based in Krugersdorp, South Africa.',
         'telephone': '0735325298',
         'email': 'JFlipsInc@gmail.com',

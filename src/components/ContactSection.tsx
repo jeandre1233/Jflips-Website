@@ -6,6 +6,7 @@
 import { useState, FormEvent } from 'react';
 import { Phone, Mail, MapPin, Instagram, Facebook, Send, CheckCircle2 } from 'lucide-react';
 import { CONTACT_INFO } from '../lib/constants';
+import { sendContactFormNotification, openMailtoFallback } from '../lib/notifications';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -17,16 +18,26 @@ export default function ContactSection() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [hadError, setHadError] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setHadError(false);
 
-    setTimeout(() => {
+    const delivered = await sendContactFormNotification(formData);
+
+    if (delivered) {
       setIsSubmitting(false);
       setIsSuccess(true);
       setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
-    }, 1200);
+    } else {
+      openMailtoFallback(formData, CONTACT_INFO.email);
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      setHadError(true);
+      setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
+    }
   };
 
   return (
@@ -205,12 +216,16 @@ export default function ContactSection() {
                 <div className="w-16 h-16 bg-mat text-chalk flex items-center justify-center mb-6">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="font-display font-bold text-2xl mb-3 text-ink">Message sent</h3>
+                <h3 className="font-display font-bold text-2xl mb-3 text-ink">
+                  {hadError ? 'Opening your email app…' : 'Message sent'}
+                </h3>
                 <p className="font-sans text-sm text-ink/60 leading-relaxed max-w-sm mb-8">
-                  Thanks for reaching out. We'll get back to you within 24 hours.
+                  {hadError
+                    ? "We've pre-filled an email for you — just hit send in your mail app to reach us."
+                    : "Thanks for reaching out. We'll get back to you within 24 hours."}
                 </p>
                 <button
-                  onClick={() => setIsSuccess(false)}
+                  onClick={() => { setIsSuccess(false); setHadError(false); }}
                   className="font-sans font-semibold text-xs uppercase tracking-widest text-mat hover:text-mat-deep transition-colors cursor-pointer"
                 >
                   Send another message

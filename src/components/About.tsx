@@ -4,6 +4,7 @@
  */
 
 import { Quote, Award, Sparkles } from 'lucide-react';
+import aboutImage from '../pictures/Image_4.jpeg';
 
 export default function About() {
   return (
@@ -24,7 +25,7 @@ export default function About() {
             {/* Premium Photo Slot */}
             <div className="relative overflow-hidden border border-ink/10 shadow-md rounded group">
               <img 
-                src="/src/pictures/Image_4.jpeg" 
+                src={aboutImage} 
                 alt="Head coach spotting young athlete" 
                 className="w-full h-[320px] object-cover transition-transform duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"

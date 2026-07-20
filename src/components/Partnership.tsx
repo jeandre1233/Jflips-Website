@@ -4,6 +4,7 @@
  */
 
 import { CheckCircle2, ArrowRight } from 'lucide-react';
+import partnershipImage from '../pictures/Image_3.jpeg';
 
 interface OptionCard {
   id: string;
@@ -79,7 +80,7 @@ export default function Partnership({ onContactClick }: { onContactClick: () => 
           <div className="lg:col-span-5">
             <div className="relative overflow-hidden border border-ink/10 shadow-md rounded">
               <img 
-                src="/src/pictures/Image_3.jpeg" 
+                src={partnershipImage} 
                 alt="School cheer partnership team" 
                 className="w-full h-[240px] object-cover hover:scale-105 transition-transform duration-500"
                 referrerPolicy="no-referrer"

@@ -5,6 +5,8 @@
 
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { CHEER_REGISTRATION_URL, TUMBLING_REGISTRATION_URL } from '../lib/constants';
+import cheerQrCode from '../pictures/C_REG.png';
+import tumblingQrCode from '../pictures/T_REG.png';
 
 export default function RegisterInterestForm() {
   return (
@@ -53,7 +55,7 @@ export default function RegisterInterestForm() {
                 <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded">
                   <div className="bg-white p-1 rounded shrink-0">
                     <img 
-                      src="/src/pictures/C_REG.png" 
+                      src={cheerQrCode} 
                       alt="Register for the Cheerleading Team QR Code" 
                       className="w-16 h-16 object-contain"
                       referrerPolicy="no-referrer"
@@ -91,7 +93,7 @@ export default function RegisterInterestForm() {
                 <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded">
                   <div className="bg-white p-1 rounded shrink-0">
                     <img 
-                      src="/src/pictures/T_REG.png" 
+                      src={tumblingQrCode} 
                       alt="Register for the Tumbling Team QR Code" 
                       className="w-16 h-16 object-contain"
                       referrerPolicy="no-referrer"
