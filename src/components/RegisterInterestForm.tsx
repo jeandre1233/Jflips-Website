@@ -23,7 +23,7 @@ export default function RegisterInterestForm() {
             </h2>
             <p className="font-sans text-chalk/60 text-base leading-relaxed">
               Register directly through the portals on the right for either our competitive
-              cheerleading squad or our precision tumbling classes.
+              cheerleading team or our precision tumbling classes.
             </p>
 
             <div className="p-6 bg-chalk/5 border border-chalk/10 mt-4 flex items-start gap-4">
@@ -43,10 +43,10 @@ export default function RegisterInterestForm() {
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-chalk/10 border-2 border-chalk/10">
             <div className="bg-ink p-8 flex flex-col justify-between">
               <div>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-mat font-bold">Squad</span>
+                <span className="font-mono text-[9px] uppercase tracking-widest text-flame font-bold">Team</span>
                 <h3 className="font-display font-extrabold text-2xl text-chalk mt-2 mb-3 tracking-tight">Cheerleading</h3>
                 <p className="text-xs text-chalk/60 leading-relaxed mb-6">
-                  Join South Africa's most exciting stunting, jumping, and dance team. Open to ages 6–18+,
+                  Join South Africa's most exciting cheerleading and tumbling team. Open to ages 4–18+,
                   Level 1–4 stunting taught safely.
                 </p>
               </div>
@@ -85,7 +85,7 @@ export default function RegisterInterestForm() {
                 <h3 className="font-display font-extrabold text-2xl text-chalk mt-2 mb-3 tracking-tight">Tumbling</h3>
                 <p className="text-xs text-chalk/60 leading-relaxed mb-6">
                   Master back handsprings, flips, and layouts in structured classes. Great for dancers,
-                  cheerleaders, and total beginners.
+                  cheerleaders, gymnasts, and total beginners.
                 </p>
               </div>
               <div className="flex flex-col gap-5 mt-4">

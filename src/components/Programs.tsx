@@ -9,11 +9,11 @@ import { ProgramItem } from '../types';
 const PROGRAMS: ProgramItem[] = [
   {
     title: 'Cheerleading team training',
-    description: 'Our flagship squad. Stunts, pyramids, basket tosses, jumps, and choreography, built into full competition routines.',
+    description: 'Our flagship team. Stunts, pyramids, basket tosses, jumps, and choreography, built into full competition routines.',
     ageGroup: 'Ages 6–18, grouped by skill',
     duration: '2–4 hrs / week',
     intensity: 'Intermediate',
-    features: ['Stunting & pyramids', 'Team choreography', 'Annual showcase', 'Safety-first syllabus'],
+    features: ['Stunting & pyramids', 'Team choreography', 'Performance routines', 'Safety-first syllabus'],
   },
   {
     title: 'Precision tumbling class',
@@ -21,7 +21,7 @@ const PROGRAMS: ProgramItem[] = [
     ageGroup: 'Ages 5+, beginner to elite',
     duration: '1–2 hrs / week',
     intensity: 'All Levels',
-    features: ['Spring-floor drills', 'Progression lines', 'Core strength & flexibility', 'Personal spotting'],
+    features: ['Air track tumbling', 'Progression lines', 'Core strength & flexibility', 'Personal spotting'],
   },
   {
     title: 'Private stunt & tumbling',
@@ -29,23 +29,23 @@ const PROGRAMS: ProgramItem[] = [
     ageGroup: 'All ages',
     duration: '45–60 min slots',
     intensity: 'Elite',
-    features: ['Rapid skill progress', 'Video analysis', 'Mental-block coaching', 'Elite spotting'],
+    features: ['Rapid skill progress', 'One-on-one personalized classes', 'Mental-block coaching', 'Elite spotting'],
   },
   {
-    title: 'Holiday clinics',
-    description: 'Multi-day training camps over school holidays, for absolute beginners and returning athletes alike.',
+    title: 'Skill progression clinics',
+    description: 'Focused two-day training camps over school holidays, for absolute beginners and returning athletes alike.',
     ageGroup: 'Ages 6–16',
-    duration: '3–5 day camps',
+    duration: '2-day camps',
     intensity: 'Introductory',
-    features: ['Skill trial loops', 'New friendships', 'Routine showcase', 'Camp shirt & award'],
+    features: ['Skill-focused trials', 'Technique & progressions', 'Accelerated skill drills', 'Safety & spotting'],
   },
   {
     title: 'School demonstrations',
-    description: 'High-energy performances for assemblies and sports days that get students excited and asking how to sign up.',
-    ageGroup: 'School assemblies',
+    description: 'High-energy showcase for schools interested in launching a team, giving students a live preview before kickoff.',
+    ageGroup: 'Schools starting a team',
     duration: '15–30 min show',
     intensity: 'All Levels',
-    features: ['Live stunting', 'Student participation', 'School spirit', 'Safety Q&A'],
+    features: ['Pre-launch preview', 'Live stunting', 'Student participation', 'Safety Q&A'],
   },
 ];
 
@@ -58,7 +58,7 @@ export default function Programs({ onContactClick }: { onContactClick: () => voi
           <div>
             <span className="tag">Programs</span>
             <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-4 text-ink">
-              Every level, one squad
+              Every level, one team
             </h2>
           </div>
           <p className="font-sans text-ink/70 max-w-lg leading-relaxed">

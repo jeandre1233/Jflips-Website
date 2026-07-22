@@ -72,7 +72,7 @@ export default function Footer() {
               <span>Cheerleading team training</span>
               <span>Precision tumbling class</span>
               <span>Private stunt coaching</span>
-              <span>Holiday clinics</span>
+              <span>Skill progression clinics</span>
               <span>School demonstrations</span>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-chalk/40 font-mono">
-          <span>&copy; {new Date().getFullYear()} JFLIPS Incorporated. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} JFLIPS. All rights reserved.</span>
 
           <button
             onClick={handleScrollToTop}

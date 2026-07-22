@@ -56,7 +56,7 @@ export default function SEO() {
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:title" content="JFLIPS | Cheerleading & Tumbling, Krugersdorp" />
-      <meta property="og:description" content="Competitive cheerleading, tumbling, and holiday clinics built on real technique, teamwork, and confidence." />
+      <meta property="og:description" content="Competitive cheerleading, tumbling, and skill progression clinics built on real technique, teamwork, and confidence." />
       <meta property="og:site_name" content="JFLIPS" />
 
       {/* Twitter */}

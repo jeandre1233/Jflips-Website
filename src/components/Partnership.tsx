@@ -56,7 +56,6 @@ const PARTNERSHIPS: OptionCard[] = [
     branding: 'JFLIPS brand',
     administration: 'JFLIPS managed',
     coaching: 'JFLIPS coaching',
-    badge: 'Zero admin',
     ctaText: 'Start a club at your school',
   },
 ];
@@ -99,27 +98,23 @@ export default function Partnership({ onContactClick }: { onContactClick: () => 
                   isClub ? 'bg-ink text-chalk' : 'bg-white text-ink'
                 }`}
               >
-                {partner.badge && (
-                  <div className="absolute top-6 right-6 tag-flame">
-                    {partner.badge}
-                  </div>
-                )}
-
                 <div>
-                  <span className="score-num text-2xl text-mat block mb-4">{partner.number}</span>
+                  <span className={`score-num text-2xl block mb-4 ${isClub ? 'text-flame' : 'text-mat'}`}>
+                    {partner.number}
+                  </span>
 
                   <h3 className={`font-display font-bold text-3xl md:text-4xl tracking-tight mb-2 ${isClub ? 'text-chalk' : 'text-ink'}`}>
                     {partner.title}
                   </h3>
-                  <p className="font-sans text-sm mb-6 text-mat font-semibold">
+                  <p className={`font-sans text-sm mb-6 font-semibold ${isClub ? 'text-flame' : 'text-mat'}`}>
                     {partner.subtitle}
                   </p>
 
-                  <p className={`font-sans text-sm leading-relaxed mb-8 ${isClub ? 'text-chalk/60' : 'text-ink/60'}`}>
+                  <p className={`font-sans text-sm leading-relaxed mb-8 ${isClub ? 'text-chalk/70' : 'text-ink/60'}`}>
                     {partner.description}
                   </p>
 
-                  <div className={`grid grid-cols-2 gap-4 mb-8 py-6 border-t-2 border-b-2 ${isClub ? 'border-chalk/15 text-chalk/80' : 'border-ink/10 text-ink/80'}`}>
+                  <div className={`grid grid-cols-2 gap-4 mb-8 py-6 border-t-2 border-b-2 ${isClub ? 'border-chalk/15 text-chalk/90' : 'border-ink/10 text-ink/80'}`}>
                     <div>
                       <span className={`font-mono text-[9px] uppercase tracking-widest block mb-1 ${isClub ? 'text-chalk/40' : 'text-ink/40'}`}>Ownership</span>
                       <span className="text-xs font-semibold">{partner.ownership}</span>
@@ -141,8 +136,8 @@ export default function Partnership({ onContactClick }: { onContactClick: () => 
                   <div className="flex flex-col gap-4">
                     {partner.features.map((feat, fIdx) => (
                       <div key={fIdx} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5 text-mat" />
-                        <span className={`font-sans text-sm ${isClub ? 'text-chalk/80' : 'text-ink/70'}`}>
+                        <CheckCircle2 className={`w-5 h-5 shrink-0 mt-0.5 ${isClub ? 'text-flame' : 'text-mat'}`} />
+                        <span className={`font-sans text-sm ${isClub ? 'text-chalk/85' : 'text-ink/70'}`}>
                           {feat}
                         </span>
                       </div>
@@ -154,7 +149,7 @@ export default function Partnership({ onContactClick }: { onContactClick: () => 
                   <button
                     onClick={onContactClick}
                     className={`group w-full font-sans font-bold text-xs uppercase tracking-widest py-4 transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer ${
-                      isClub ? 'bg-mat hover:bg-mat-deep text-chalk' : 'border-2 border-ink hover:bg-ink hover:text-chalk text-ink'
+                      isClub ? 'bg-flame hover:bg-flame-deep text-chalk' : 'border-2 border-ink hover:bg-ink hover:text-chalk text-ink'
                     }`}
                   >
                     {partner.ctaText}

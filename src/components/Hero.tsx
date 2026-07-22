@@ -45,7 +45,7 @@ export default function Hero({ onSchoolsClick, onRegisterClick }: HeroProps) {
           </h1>
 
           <p className="font-sans text-lg text-chalk/70 max-w-xl leading-relaxed mb-10">
-            JFLIPS is a competitive cheerleading and tumbling squad based in Krugersdorp.
+            JFLIPS is a competitive cheerleading and tumbling team based in Krugersdorp.
             We teach real stunting technique, safe progressions, and the kind of teamwork
             that only comes from trusting the person spotting you.
           </p>

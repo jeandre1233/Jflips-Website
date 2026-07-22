@@ -9,7 +9,6 @@ import Hero from './components/Hero';
 import Mission from './components/Mission';
 import Partnership from './components/Partnership';
 import Programs from './components/Programs';
-import HowItWorks from './components/HowItWorks';
 import About from './components/About';
 import RegisterInterestForm from './components/RegisterInterestForm';
 import ContactSection from './components/ContactSection';
@@ -52,9 +51,6 @@ export default function App() {
 
       {/* 7. Full Syllabus Programs Portfolio */}
       <Programs onContactClick={() => handleScrollToSection('#contact')} />
-
-      {/* 8. Regional Rollout Pipeline Timeline (No mention of trials) */}
-      <HowItWorks onRegisterClick={() => handleScrollToSection('#register')} />
 
       {/* 9. High-end Editorial Founders Narrative Story */}
       <About />

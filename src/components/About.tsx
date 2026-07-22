@@ -30,9 +30,6 @@ export default function About() {
                 className="w-full h-[320px] object-cover transition-transform duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm p-3 border border-ink/5 text-xs text-ink/80 font-medium">
-                "Every stunt follows a strict progression. Safety before the skill."
-              </div>
             </div>
 
             <div className="flex flex-col gap-6 mt-2">
@@ -82,23 +79,6 @@ export default function About() {
               mentorship, help our athletes succeed as teammates on the mat and as leaders elsewhere.
             </p>
 
-            <div className="relative my-4 p-8 bg-chalk border-l-4 border-mat text-ink rounded shadow-sm">
-              <Quote className="absolute top-4 right-6 w-12 h-12 text-mat/10 pointer-events-none" />
-              <p className="font-sans italic text-base leading-relaxed text-ink/90">
-                "When an athlete understands their teammate's safety is literally in their hands,
-                their whole attitude toward accountability and focus changes. That's the real power of cheerleading."
-              </p>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="w-8 h-8 bg-mat text-chalk font-display font-bold text-xs flex items-center justify-center rounded">
-                  JF
-                </div>
-                <div>
-                  <span className="font-display font-bold text-xs block text-ink">Jeandré Blacq</span>
-                  <span className="font-mono text-[9px] uppercase tracking-wider text-ink/40 block mt-0.5">Founder & Head Coach</span>
-                </div>
-              </div>
-            </div>
-
             <p className="text-sm md:text-base">
               Cheerleading and tumbling have a real power to bring school communities together and
               build lifelong habits. As we grow JFLIPS across Krugersdorp and the West Rand, our
@@ -109,7 +89,7 @@ export default function About() {
             <div className="mt-8 border-t border-ink/10 pt-8 flex items-center justify-between text-sm">
               <div>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-ink/40 block">Organization</span>
-                <span className="font-display font-bold text-ink text-sm">JFLIPS Incorporated</span>
+                <span className="font-display font-bold text-ink text-sm">JFLIPS</span>
               </div>
               <div className="text-right">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-ink/40 block">Based in</span>

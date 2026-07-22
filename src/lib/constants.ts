@@ -8,7 +8,7 @@ export const TUMBLING_REGISTRATION_URL = "https://jflips.vercel.app/#/signup?own
 
 export const CONTACT_INFO = {
   phone: "0735325298",
-  phoneFormatted: "+27 (0) 73 532 5298",
+  phoneFormatted: "+27 73 532 5298",
   email: "JFlipsInc@gmail.com",
   location: "Krugersdorp, South Africa",
   address: "Krugersdorp, Gauteng, South Africa",
