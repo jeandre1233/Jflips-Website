@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Activity, ChevronRight } from 'lucide-react';
+import { Activity, ChevronRight, Calendar, Clock, MapPin, DollarSign, FileText, Download } from 'lucide-react';
 import { ProgramItem } from '../types';
 
 const PROGRAMS: ProgramItem[] = [
@@ -17,17 +17,22 @@ const PROGRAMS: ProgramItem[] = [
   },
   {
     title: 'Precision tumbling class',
-    description: 'Floor gymnastics only. Athletes progress from handstands and cartwheels to round-offs, back handsprings, and layouts.',
+    description: 'Floor gymnastics & tumbling mechanics. Athletes progress safely from handstands and cartwheels to round-offs, back handsprings, and flips.',
     ageGroup: 'Ages 5+, beginner to elite',
-    duration: '1–2 hrs / week',
+    duration: 'Fridays: 4:00 PM – 5:00 PM',
     intensity: 'All Levels',
-    features: ['Air track tumbling', 'Progression lines', 'Core strength & flexibility', 'Personal spotting'],
+    features: [
+      'Venue: Laerskool Muldersdrift',
+      'Cost: R200 per session',
+      'Air track & progression lines',
+      'More days & times opening soon!',
+    ],
   },
   {
     title: 'Private stunt & tumbling',
-    description: 'One-on-one sessions with a certified coach, built to break through mental blocks and sharpen specific skills fast.',
+    description: 'One-on-one sessions with a certified coach (R350 / session), built to break through mental blocks and sharpen specific skills fast.',
     ageGroup: 'All ages',
-    duration: '45–60 min slots',
+    duration: 'Flexible scheduling',
     intensity: 'Elite',
     features: ['Rapid skill progress', 'One-on-one personalized classes', 'Mental-block coaching', 'Elite spotting'],
   },
@@ -54,22 +59,58 @@ export default function Programs({ onContactClick }: { onContactClick: () => voi
     <section id="programs" className="py-24 md:py-32 bg-white text-ink border-t-2 border-b-2 border-ink">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mb-20 gap-8">
+        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mb-16 gap-8">
           <div>
-            <span className="tag">Programs</span>
+            <span className="tag">Programs & Syllabi</span>
             <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-4 text-ink">
-              Every level, one team
+              From Foundations to Flight
             </h2>
           </div>
           <p className="font-sans text-ink/70 max-w-lg leading-relaxed">
-            Every programme is coached by accredited cheer specialists, with mechanics scaled so
-            every athlete flies and tumbles under control.
+            Every programme is coached by accredited cheer & tumbling specialists, with mechanics scaled so every athlete flies and tumbles safely under control.
           </p>
+        </div>
+
+        {/* Tumbling Parent Info Sheet Spotlight Banner */}
+        <div className="mb-12 p-6 md:p-8 bg-[#f5f1fa] border-2 border-ink/15 rounded-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-mat text-chalk rounded shrink-0">
+              <FileText className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-[10px] uppercase tracking-widest bg-flame/15 text-flame font-bold px-2 py-0.5 rounded">
+                  Parent Info Sheet
+                </span>
+                <span className="text-xs text-ink/50 font-medium">Updated Details</span>
+              </div>
+              <h3 className="font-display font-bold text-xl md:text-2xl text-ink mt-1">
+                Tumbling Class Schedule & Pricing
+              </h3>
+              <p className="font-sans text-xs md:text-sm text-ink/70 mt-1 max-w-2xl leading-relaxed">
+                <strong className="text-ink">Laerskool Muldersdrift</strong> • Fridays 4:00 PM – 5:00 PM • R200/session (or R350/session for 1-on-1 private coaching).
+                <br />
+                <em className="text-mat font-medium">Note: Classes are currently on Fridays. As numbers grow, we are actively looking at expanding to more days and times!</em>
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 shrink-0 w-full md:w-auto">
+            <a
+              href="/tumbling_info.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-ink hover:bg-mat text-chalk font-sans font-bold text-xs uppercase tracking-widest px-5 py-3 transition-colors rounded"
+            >
+              <Download className="w-4 h-4 text-flame" />
+              Download Info Sheet PDF
+            </a>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10 border-2 border-ink/10">
           {PROGRAMS.map((prog, idx) => {
             const isFlagship = idx === 0;
+            const isTumbling = idx === 1;
             return (
               <div
                 key={prog.title}
@@ -80,9 +121,9 @@ export default function Programs({ onContactClick }: { onContactClick: () => voi
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-6">
                     <span className="font-mono text-[9px] uppercase tracking-widest font-bold px-2 py-1 bg-chalk text-ink/70 border border-ink/10">
-                      {isFlagship ? 'Flagship Stream' : prog.intensity}
+                      {isFlagship ? 'Flagship Stream' : isTumbling ? 'Tumbling Focus' : prog.intensity}
                     </span>
-                    <span className="font-mono text-[9px] text-ink/40 tracking-wider">
+                    <span className="font-mono text-[9px] text-ink/60 tracking-wider font-semibold">
                       {prog.duration}
                     </span>
                   </div>
@@ -139,7 +180,17 @@ export default function Programs({ onContactClick }: { onContactClick: () => voi
                   )}
                 </div>
 
-                <div className={`mt-8 pt-6 border-t-2 border-ink/10 ${isFlagship ? 'flex justify-end' : ''}`}>
+                <div className={`mt-8 pt-6 border-t-2 border-ink/10 flex items-center ${isFlagship ? 'justify-end' : 'justify-between'}`}>
+                  {isTumbling && (
+                    <a
+                      href="/tumbling_info.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/60 hover:text-ink transition-colors underline"
+                    >
+                      PDF Info Sheet
+                    </a>
+                  )}
                   <button
                     onClick={onContactClick}
                     className="group/btn inline-flex items-center gap-1.5 font-sans font-bold text-[10px] uppercase tracking-widest text-mat hover:text-mat-deep transition-colors cursor-pointer"

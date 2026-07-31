@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, FileText, MapPin, Calendar, DollarSign } from 'lucide-react';
 import { CHEER_REGISTRATION_URL, TUMBLING_REGISTRATION_URL } from '../lib/constants';
 import cheerQrCode from '../pictures/C_REG.png';
 import tumblingQrCode from '../pictures/T_REG.png';
@@ -33,7 +33,7 @@ export default function RegisterInterestForm() {
               <div>
                 <h4 className="font-display font-bold text-sm text-chalk mb-1">What happens next</h4>
                 <p className="text-xs text-chalk/60 leading-relaxed">
-                  Once you register, you'll get our schedule, kit requirements, and coaching
+                  Once you register, you'll get our full schedule, kit requirements, and coaching
                   assignment by email.
                 </p>
               </div>
@@ -82,13 +82,34 @@ export default function RegisterInterestForm() {
             <div className="bg-ink p-8 flex flex-col justify-between">
               <div>
                 <span className="font-mono text-[9px] uppercase tracking-widest text-flame font-bold">Class</span>
-                <h3 className="font-display font-extrabold text-2xl text-chalk mt-2 mb-3 tracking-tight">Tumbling</h3>
-                <p className="text-xs text-chalk/60 leading-relaxed mb-6">
+                <h3 className="font-display font-extrabold text-2xl text-chalk mt-2 mb-2 tracking-tight">Tumbling</h3>
+                
+                {/* Parent Info Sheet Quick Card */}
+                <div className="my-4 p-3.5 bg-chalk/5 border border-chalk/10 rounded text-[11px] space-y-1.5">
+                  <div className="flex items-center gap-2 text-chalk/80">
+                    <MapPin className="w-3.5 h-3.5 text-flame shrink-0" />
+                    <span>Laerskool Muldersdrift</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-chalk/80">
+                    <Calendar className="w-3.5 h-3.5 text-flame shrink-0" />
+                    <span>Fridays (4:00 PM – 5:00 PM)</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-chalk/80">
+                    <DollarSign className="w-3.5 h-3.5 text-flame shrink-0" />
+                    <span>R200/session (or R350/session 1-on-1 private)</span>
+                  </div>
+                  <p className="text-[10px] text-chalk/60 italic pt-1 border-t border-chalk/10 leading-tight">
+                    *Classes currently on Fridays; looking to add more days as numbers grow!
+                  </p>
+                </div>
+
+                <p className="text-xs text-chalk/60 leading-relaxed mb-4">
                   Master back handsprings, flips, and layouts in structured classes. Great for dancers,
                   cheerleaders, gymnasts, and total beginners.
                 </p>
               </div>
-              <div className="flex flex-col gap-5 mt-4">
+
+              <div className="flex flex-col gap-3 mt-4">
                 {/* QR Code Container */}
                 <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded">
                   <div className="bg-white p-1 rounded shrink-0">
@@ -111,8 +132,18 @@ export default function RegisterInterestForm() {
                   rel="noopener noreferrer"
                   className="w-full text-center bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-colors duration-150"
                 >
-                  Register for the Tumbling Team
+                  Register for Tumbling
                   <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+
+                <a
+                  href="/tumbling_info.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center border border-chalk/20 hover:border-chalk/50 text-chalk/80 hover:text-chalk font-sans font-semibold text-[10px] uppercase tracking-wider py-2 transition-colors flex items-center justify-center gap-1.5 rounded"
+                >
+                  <FileText className="w-3.5 h-3.5 text-flame" />
+                  View Tumbling Info Sheet PDF
                 </a>
               </div>
             </div>

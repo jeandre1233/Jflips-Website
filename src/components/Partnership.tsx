@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ArrowRight, FileText, Download } from 'lucide-react';
 import partnershipImage from '../pictures/Image_3.jpeg';
 
 interface OptionCard {
@@ -25,38 +25,38 @@ const PARTNERSHIPS: OptionCard[] = [
   {
     id: 'school-programme',
     number: '01',
-    title: 'School programme',
-    subtitle: 'Your school, our coaching',
-    description: 'For schools who want cheer as an official sport, run through your existing co-curricular setup and your own school colors.',
+    title: 'Option A: School-Run Team',
+    subtitle: 'Your school, our accredited coaching',
+    description: 'The school takes full ownership of the team identity and administration. Registered under SAMCA through the school, JFLIPS provides qualified coaches directly.',
     features: [
-      'The school owns the team',
-      'Uses your school colors, branding & uniforms',
-      'Your office handles billing & permissions',
-      'JFLIPS provides accredited coaching',
+      'School owns team identity & registers with SAMCA',
+      'Uses your school colors, name & custom uniforms',
+      'School handles parent billing & event permissions',
+      'JFLIPS provides accredited coaches & choreography',
     ],
     ownership: 'School owned',
-    branding: 'School brand',
+    branding: '[School Name] Cheer',
     administration: 'School managed',
-    coaching: 'JFLIPS coaching',
-    ctaText: 'Ask about school programme',
+    coaching: 'JFLIPS coaches',
+    ctaText: 'Inquire about Option A',
   },
   {
     id: 'jflips-club',
     number: '02',
-    title: 'JFLIPS club',
-    subtitle: 'Zero admin, on your premises',
-    description: 'For schools who want elite cheer training on-site with no administrative work or cost to the school.',
+    title: 'Option B: JFLIPS Club Partnership',
+    subtitle: 'Turnkey program, zero admin load',
+    description: 'JFLIPS handles everything end-to-end — administration, coaching staff, and parent billing. We utilize your facilities for practice with a co-branded team name.',
     features: [
-      'JFLIPS owns & operates the team',
-      'Runs under JFLIPS colors & apparel',
-      'Parents register and pay JFLIPS directly',
-      'JFLIPS manages everything end to end',
+      'JFLIPS handles all admin, registration & parent billing',
+      'Zero administrative or financial burden on the school',
+      'Co-branded team (e.g. "JFLIPS at [School Name]")',
+      'Uses school grounds/gym for practice sessions',
     ],
-    ownership: 'JFLIPS owned',
-    branding: 'JFLIPS brand',
+    ownership: 'JFLIPS managed',
+    branding: 'Co-branded team',
     administration: 'JFLIPS managed',
-    coaching: 'JFLIPS coaching',
-    ctaText: 'Start a club at your school',
+    coaching: 'JFLIPS coaches',
+    ctaText: 'Inquire about Option B',
   },
 ];
 
@@ -65,25 +65,50 @@ export default function Partnership({ onContactClick }: { onContactClick: () => 
     <section id="schools" className="py-24 md:py-32 bg-[#ebe6f2] text-ink scroll-mt-10 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-        <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
+        <div className="grid lg:grid-cols-12 gap-12 items-center mb-16">
           <div className="lg:col-span-7">
-            <span className="tag">For schools</span>
+            <span className="tag">School Partnership Proposal</span>
             <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-4 text-ink leading-tight">
-              Bring cheer to your school
+              Bring competitive cheer & tumbling to your school
             </h2>
             <p className="font-sans text-lg text-ink/70 mt-6 leading-relaxed">
-              We partner with schools across the West Rand to set up cheer programmes. Pick whichever
-              setup fits how your school runs.
+              We offer two flexible partnership models so your school can provide a high-energy, inclusive, SAMCA-registered sport with the level of involvement that suits your sports department.
             </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="/school_proposal.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-ink hover:bg-mat text-chalk font-sans font-bold text-xs uppercase tracking-widest px-6 py-3.5 transition-colors duration-150 rounded"
+              >
+                <FileText className="w-4 h-4 text-flame" />
+                View Full Proposal PDF (7 Pages)
+                <Download className="w-3.5 h-3.5 ml-1 opacity-70" />
+              </a>
+              <button
+                onClick={onContactClick}
+                className="inline-flex items-center gap-2 border-2 border-ink hover:bg-ink hover:text-chalk font-sans font-bold text-xs uppercase tracking-widest px-6 py-3.5 transition-colors duration-150 rounded cursor-pointer"
+              >
+                Request a School Meeting
+              </button>
+            </div>
           </div>
+
           <div className="lg:col-span-5">
             <div className="relative overflow-hidden border border-ink/10 shadow-md rounded">
               <img 
                 src={partnershipImage} 
                 alt="School cheer partnership team" 
-                className="w-full h-[240px] object-cover hover:scale-105 transition-transform duration-500"
+                className="w-full h-[260px] object-cover hover:scale-105 transition-transform duration-500"
                 referrerPolicy="no-referrer"
               />
+              <div className="p-4 bg-white/95 border-t border-ink/10">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-mat font-bold block">SAMCA Competition Ready</span>
+                <p className="font-sans text-xs text-ink/70 mt-1">
+                  Full competition choreography & progression-based curriculum provided for both models.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -120,11 +145,11 @@ export default function Partnership({ onContactClick }: { onContactClick: () => 
                       <span className="text-xs font-semibold">{partner.ownership}</span>
                     </div>
                     <div>
-                      <span className={`font-mono text-[9px] uppercase tracking-widest block mb-1 ${isClub ? 'text-chalk/40' : 'text-ink/40'}`}>Apparel</span>
+                      <span className={`font-mono text-[9px] uppercase tracking-widest block mb-1 ${isClub ? 'text-chalk/40' : 'text-ink/40'}`}>Branding</span>
                       <span className="text-xs font-semibold">{partner.branding}</span>
                     </div>
                     <div>
-                      <span className={`font-mono text-[9px] uppercase tracking-widest block mb-1 ${isClub ? 'text-chalk/40' : 'text-ink/40'}`}>Admin</span>
+                      <span className={`font-mono text-[9px] uppercase tracking-widest block mb-1 ${isClub ? 'text-chalk/40' : 'text-ink/40'}`}>Admin & Billing</span>
                       <span className="text-xs font-semibold">{partner.administration}</span>
                     </div>
                     <div>
@@ -145,7 +170,7 @@ export default function Partnership({ onContactClick }: { onContactClick: () => 
                   </div>
                 </div>
 
-                <div className="mt-12">
+                <div className="mt-12 flex flex-col gap-3">
                   <button
                     onClick={onContactClick}
                     className={`group w-full font-sans font-bold text-xs uppercase tracking-widest py-4 transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer ${
