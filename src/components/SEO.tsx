@@ -23,7 +23,7 @@ export default function SEO() {
         'url': window.location.origin,
         'logo': `${window.location.origin}/logo.png`,
         'description': 'Competitive cheerleading and tumbling coaching organization based in Krugersdorp, South Africa.',
-        'telephone': '0735325298',
+        'telephone': '0690403387',
         'email': 'JFlipsInc@gmail.com',
         'address': {
           '@type': 'PostalAddress',

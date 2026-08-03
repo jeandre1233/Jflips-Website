@@ -7,8 +7,8 @@ export const CHEER_REGISTRATION_URL = "https://jflips.vercel.app/#/signup-cheer?
 export const TUMBLING_REGISTRATION_URL = "https://jflips.vercel.app/#/signup?ownerId=95c19d4f-787a-4c68-9a2d-b599cd87ffd9";
 
 export const CONTACT_INFO = {
-  phone: "0735325298",
-  phoneFormatted: "+27 73 532 5298",
+  phone: "0690403387",
+  phoneFormatted: "+27 69 040 3387",
   email: "JFlipsInc@gmail.com",
   location: "Krugersdorp, South Africa",
   address: "Krugersdorp, Gauteng, South Africa",
