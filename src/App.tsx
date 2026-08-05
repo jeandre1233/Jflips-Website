@@ -7,6 +7,7 @@ import SEO from './components/SEO';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Mission from './components/Mission';
+import TumblingSchedule from './components/TumblingSchedule';
 import Partnership from './components/Partnership';
 import Programs from './components/Programs';
 import About from './components/About';
@@ -45,6 +46,9 @@ export default function App() {
 
       {/* 4. Tight Mission Section: Statement + Combined Values/Benefits Grid */}
       <Mission />
+
+      {/* 5. Tumbling Classes Schedule & Info (Wed, Thu & Fri times) */}
+      <TumblingSchedule />
 
       {/* 6. Comparison Table for Institutional school integrations */}
       <Partnership onContactClick={() => handleScrollToSection('#contact')} />

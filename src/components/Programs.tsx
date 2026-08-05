@@ -19,7 +19,7 @@ const PROGRAMS: ProgramItem[] = [
     title: 'Precision tumbling class',
     description: 'Floor gymnastics & tumbling mechanics. Athletes progress safely from handstands and cartwheels to round-offs, back handsprings, and flips.',
     ageGroup: 'Ages 5+, beginner to elite',
-    duration: 'Fridays: 4:00 PM – 5:00 PM',
+    duration: 'Wed & Thu: 2–3 PM | Fri: 4–5 PM',
     intensity: 'All Levels',
     features: [
       'Venue: Laerskool Muldersdrift',
@@ -88,9 +88,9 @@ export default function Programs({ onContactClick }: { onContactClick: () => voi
                 Tumbling Class Schedule & Pricing
               </h3>
               <p className="font-sans text-xs md:text-sm text-ink/70 mt-1 max-w-2xl leading-relaxed">
-                <strong className="text-ink">Laerskool Muldersdrift</strong> • Fridays 4:00 PM – 5:00 PM • R200/session (or R350/session for 1-on-1 private coaching).
+                <strong className="text-ink">Laerskool Muldersdrift</strong> • Wed & Thu (2:00 PM – 3:00 PM), Fri (4:00 PM – 5:00 PM) • R200/session (or R350/session for 1-on-1 private coaching).
                 <br />
-                <em className="text-mat font-medium">Note: Classes are currently on Fridays. As numbers grow, we are actively looking at expanding to more days and times!</em>
+                <em className="text-mat font-medium">Note: As numbers grow, we are actively looking at expanding to more days and times!</em>
               </p>
             </div>
           </div>

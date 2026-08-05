@@ -92,14 +92,14 @@ export default function RegisterInterestForm() {
                   </div>
                   <div className="flex items-center gap-2 text-chalk/80">
                     <Calendar className="w-3.5 h-3.5 text-flame shrink-0" />
-                    <span>Fridays (4:00 PM – 5:00 PM)</span>
+                    <span>Wed & Thu (2:00–3:00 PM) | Fri (4:00–5:00 PM)</span>
                   </div>
                   <div className="flex items-center gap-2 text-chalk/80">
                     <DollarSign className="w-3.5 h-3.5 text-flame shrink-0" />
                     <span>R200/session (or R350/session 1-on-1 private)</span>
                   </div>
                   <p className="text-[10px] text-chalk/60 italic pt-1 border-t border-chalk/10 leading-tight">
-                    *Classes currently on Fridays; looking to add more days as numbers grow!
+                    *Looking to add even more days as numbers grow!
                   </p>
                 </div>
 
