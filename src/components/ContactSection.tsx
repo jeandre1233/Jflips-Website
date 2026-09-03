@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, FormEvent } from 'react';
-import { Phone, Mail, MapPin, Instagram, Facebook, Send, CheckCircle2 } from 'lucide-react';
+import { useState, useEffect, FormEvent } from 'react';
+import { Phone, Mail, MapPin, Instagram, Facebook, Send, CheckCircle2, MessageCircle, AlertCircle } from 'lucide-react';
 import { CONTACT_INFO } from '../lib/constants';
-import { sendContactFormNotification, openMailtoFallback } from '../lib/notifications';
+import { sendContactFormNotification } from '../lib/notifications';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -18,25 +18,51 @@ export default function ContactSection() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [hadError, setHadError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [submittedInfo, setSubmittedInfo] = useState<{
+    name: string;
+    email: string;
+    subject: string;
+  } | null>(null);
+
+  useEffect(() => {
+    const handlePrefill = (event: Event) => {
+      const customEvent = event as CustomEvent<{ subject?: string; message?: string }>;
+      if (customEvent.detail) {
+        setFormData((prev) => ({
+          ...prev,
+          subject: customEvent.detail?.subject || prev.subject,
+          message: customEvent.detail?.message || prev.message,
+        }));
+        setIsSuccess(false);
+        setErrorMessage(null);
+      }
+    };
+
+    window.addEventListener('jflips:prefill-contact', handlePrefill);
+    return () => window.removeEventListener('jflips:prefill-contact', handlePrefill);
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setHadError(false);
+    setErrorMessage(null);
 
     const delivered = await sendContactFormNotification(formData);
 
+    setIsSubmitting(false);
     if (delivered) {
-      setIsSubmitting(false);
+      setSubmittedInfo({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+      });
       setIsSuccess(true);
       setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
     } else {
-      openMailtoFallback(formData, CONTACT_INFO.email);
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setHadError(true);
-      setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
+      setErrorMessage(
+        `Unable to dispatch your message automatically. Please try again or reach Coach Jeandré directly on WhatsApp at ${CONTACT_INFO.phoneFormatted}.`
+      );
     }
   };
 
@@ -172,6 +198,7 @@ export default function ContactSection() {
                     className="bg-chalk border-2 border-ink/10 px-4 py-3 text-sm text-ink focus:outline-none focus:border-mat transition-colors"
                   >
                     <option value="General Inquiry">General question</option>
+                    <option value="Merchandise Order">Merchandise order / inquiry</option>
                     <option value="School Partnership">School partnership</option>
                     <option value="Private Booking">Private coaching</option>
                     <option value="Exhibition Demo">School demonstration</option>
@@ -193,6 +220,24 @@ export default function ContactSection() {
                   />
                 </div>
 
+                {errorMessage && (
+                  <div className="p-4 bg-amber-50 border border-amber-200 text-amber-900 rounded text-xs flex items-start gap-3">
+                    <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                    <div className="flex-1">
+                      <p className="font-sans leading-relaxed">{errorMessage}</p>
+                      <a
+                        href={`https://wa.me/27${CONTACT_INFO.phone.startsWith('0') ? CONTACT_INFO.phone.slice(1) : CONTACT_INFO.phone}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 mt-2 text-mat font-bold hover:underline"
+                      >
+                        <MessageCircle className="w-3.5 h-3.5" />
+                        <span>Chat with us on WhatsApp instead</span>
+                      </a>
+                    </div>
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -201,7 +246,7 @@ export default function ContactSection() {
                   {isSubmitting ? (
                     <>
                       <div className="w-4 h-4 border-2 border-chalk/30 border-t-chalk rounded-full animate-spin" />
-                      <span>Sending...</span>
+                      <span>Sending inquiry...</span>
                     </>
                   ) : (
                     <>
@@ -212,24 +257,40 @@ export default function ContactSection() {
                 </button>
               </form>
             ) : (
-              <div className="flex flex-col items-center text-center py-12">
-                <div className="w-16 h-16 bg-mat text-chalk flex items-center justify-center mb-6">
-                  <CheckCircle2 className="w-8 h-8" />
+              <div className="flex flex-col items-center text-center py-10 px-4">
+                <div className="w-16 h-16 bg-emerald-600 text-chalk rounded-full flex items-center justify-center mb-6 shadow-sm">
+                  <CheckCircle2 className="w-9 h-9" />
                 </div>
-                <h3 className="font-display font-bold text-2xl mb-3 text-ink">
-                  {hadError ? 'Opening your email app…' : 'Message sent'}
+                <h3 className="font-display font-extrabold text-2xl md:text-3xl mb-3 text-ink">
+                  Inquiry Sent Successfully!
                 </h3>
-                <p className="font-sans text-sm text-ink/60 leading-relaxed max-w-sm mb-8">
-                  {hadError
-                    ? "We've pre-filled an email for you — just hit send in your mail app to reach us."
-                    : "Thanks for reaching out. We'll get back to you within 24 hours."}
+                <p className="font-sans text-sm text-ink/75 leading-relaxed max-w-md mb-2">
+                  Thank you, <strong className="text-ink font-semibold">{submittedInfo?.name || 'there'}</strong>! Your message regarding <strong className="text-ink font-semibold">"{submittedInfo?.subject || 'Inquiry'}"</strong> has been sent directly to the JFLIPS coaching team.
                 </p>
-                <button
-                  onClick={() => { setIsSuccess(false); setHadError(false); }}
-                  className="font-sans font-semibold text-xs uppercase tracking-widest text-mat hover:text-mat-deep transition-colors cursor-pointer"
-                >
-                  Send another message
-                </button>
+                <p className="font-sans text-xs text-ink/60 leading-relaxed max-w-md mb-8">
+                  We will review your inquiry and reply to <span className="font-mono text-mat font-medium">{submittedInfo?.email}</span> within 24 hours.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center gap-3">
+                  <button
+                    onClick={() => {
+                      setIsSuccess(false);
+                      setSubmittedInfo(null);
+                      setErrorMessage(null);
+                    }}
+                    className="font-sans font-semibold text-xs uppercase tracking-widest px-6 py-3 bg-ink text-chalk hover:bg-mat transition-colors rounded cursor-pointer"
+                  >
+                    Send another message
+                  </button>
+                  <a
+                    href={`https://wa.me/27${CONTACT_INFO.phone.startsWith('0') ? CONTACT_INFO.phone.slice(1) : CONTACT_INFO.phone}?text=${encodeURIComponent("Hi JFLIPS, I just sent an inquiry on your website and would also like to connect on WhatsApp.")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-sans font-semibold text-xs uppercase tracking-widest px-5 py-3 border border-ink/20 text-ink hover:bg-chalk transition-colors rounded inline-flex items-center gap-1.5"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+                    <span>WhatsApp Coach</span>
+                  </a>
+                </div>
               </div>
             )}
           </div>

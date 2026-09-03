@@ -10,6 +10,7 @@ import Mission from './components/Mission';
 import TumblingSchedule from './components/TumblingSchedule';
 import Partnership from './components/Partnership';
 import Programs from './components/Programs';
+import Merchandise from './components/Merchandise';
 import About from './components/About';
 import RegisterInterestForm from './components/RegisterInterestForm';
 import ContactSection from './components/ContactSection';
@@ -55,6 +56,9 @@ export default function App() {
 
       {/* 7. Full Syllabus Programs Portfolio */}
       <Programs onContactClick={() => handleScrollToSection('#contact')} />
+
+      {/* 8. Official Team Merchandise & Athletic Gear */}
+      <Merchandise />
 
       {/* 9. High-end Editorial Founders Narrative Story */}
       <About />

@@ -21,6 +21,7 @@ export const NAVIGATION_LINKS = [
   { label: "Schools", href: "#schools" },
   { label: "Parents", href: "#parents" },
   { label: "Programs", href: "#programs" },
+  { label: "Merch", href: "#merch" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
