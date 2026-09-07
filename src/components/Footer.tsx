@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Mail, Phone, MapPin, Instagram, Facebook, ArrowUp, MessageCircle } from 'lucide-react';
+import { Mail, MapPin, Instagram, Facebook, ArrowUp, MessageCircle } from 'lucide-react';
 import { CONTACT_INFO, NAVIGATION_LINKS, WHATSAPP_LINKS } from '../lib/constants';
 import JFlipsLogo from './JFlipsLogo';
 
@@ -13,28 +13,27 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-ink text-chalk/60 border-t-2 border-chalk/10 pt-16 pb-10">
+    <footer className="bg-[#0b132b] text-zinc-400 border-t border-white/10 pt-16 pb-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-12 pb-12 border-b-2 border-chalk/10 items-start">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-12 pb-12 border-b border-white/10 items-start">
 
-          <div className="lg:col-span-4 flex flex-col gap-6">
+          <div className="lg:col-span-4 flex flex-col gap-5">
             <div className="flex items-center gap-3">
-              <JFlipsLogo className="h-10 [&_span]:text-chalk" showText={false} size="sm" />
-              <span className="font-display font-extrabold text-2xl tracking-tight text-chalk">JFLIPS</span>
+              <JFlipsLogo className="h-9 [&_span]:text-white" showText={false} size="sm" />
+              <span className="font-display font-extrabold text-2xl tracking-tight text-white">JFLIPS</span>
             </div>
 
-            <p className="font-sans text-xs text-chalk/50 leading-relaxed">
-              We help young athletes and schools in Krugersdorp find confidence, athletic power, and
-              real teamwork through structured, safe cheerleading and tumbling programmes.
+            <p className="font-sans text-xs text-zinc-400 leading-relaxed">
+              Structured, safety-first cheerleading and tumbling coaching in Krugersdorp and the West Rand.
             </p>
 
-            <div className="flex gap-4 text-chalk/60">
+            <div className="flex gap-3 text-zinc-400">
               <a
                 href={CONTACT_INFO.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 bg-chalk/5 hover:bg-mat hover:text-chalk border border-chalk/15 flex items-center justify-center transition-colors duration-150"
+                className="w-8 h-8 rounded bg-white/5 hover:bg-mat hover:text-white border border-white/10 flex items-center justify-center transition-colors"
                 aria-label="Instagram Profile"
               >
                 <Instagram className="w-4 h-4" />
@@ -43,7 +42,7 @@ export default function Footer() {
                 href={CONTACT_INFO.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 bg-chalk/5 hover:bg-mat hover:text-chalk border border-chalk/15 flex items-center justify-center transition-colors duration-150"
+                className="w-8 h-8 rounded bg-white/5 hover:bg-mat hover:text-white border border-white/10 flex items-center justify-center transition-colors"
                 aria-label="Facebook Page"
               >
                 <Facebook className="w-4 h-4" />
@@ -51,55 +50,55 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-2 flex flex-col gap-4">
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-chalk font-bold">
-              Navigate
+          <div className="lg:col-span-2 flex flex-col gap-3">
+            <h4 className="font-sans font-semibold text-xs text-white uppercase tracking-wider">
+              Navigation
             </h4>
-            <nav className="flex flex-col gap-2.5 text-xs">
+            <nav className="flex flex-col gap-2 text-xs">
               {NAVIGATION_LINKS.map((link) => (
-                <a key={link.href} href={link.href} className="hover:text-chalk transition-colors duration-150 py-0.5">
+                <a key={link.href} href={link.href} className="hover:text-white transition-colors py-0.5">
                   {link.label}
                 </a>
               ))}
             </nav>
           </div>
 
-          <div className="lg:col-span-3 flex flex-col gap-4">
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-chalk font-bold">
+          <div className="lg:col-span-3 flex flex-col gap-3">
+            <h4 className="font-sans font-semibold text-xs text-white uppercase tracking-wider">
               Programs
             </h4>
-            <div className="flex flex-col gap-2.5 text-xs text-chalk/50">
+            <div className="flex flex-col gap-2 text-xs text-zinc-400">
               <span>Cheerleading team training</span>
-              <span>Precision tumbling class</span>
-              <span>Private stunt coaching</span>
-              <span>Skill progression clinics</span>
+              <span>Tumbling classes</span>
+              <span>Private coaching</span>
+              <span>School partnership teams</span>
               <span>School demonstrations</span>
             </div>
           </div>
 
-          <div className="lg:col-span-3 flex flex-col gap-4">
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-chalk font-bold">
+          <div className="lg:col-span-3 flex flex-col gap-3">
+            <h4 className="font-sans font-semibold text-xs text-white uppercase tracking-wider">
               Contact
             </h4>
-            <div className="flex flex-col gap-3 text-xs">
-              <div className="flex items-center gap-2 text-chalk/50">
+            <div className="flex flex-col gap-2.5 text-xs">
+              <div className="flex items-center gap-2 text-zinc-400">
                 <Mail className="w-4 h-4 text-mat shrink-0" />
-                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-chalk transition-colors break-all">
+                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-white transition-colors break-all">
                   {CONTACT_INFO.email}
                 </a>
               </div>
-              <div className="flex items-center gap-2 text-chalk/50">
+              <div className="flex items-center gap-2 text-zinc-400">
                 <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
                 <a
                   href={WHATSAPP_LINKS.general}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-chalk transition-colors"
+                  className="hover:text-white transition-colors"
                 >
-                  {CONTACT_INFO.phoneFormatted} (WhatsApp)
+                  {CONTACT_INFO.phoneFormatted}
                 </a>
               </div>
-              <div className="flex items-center gap-2 text-chalk/50">
+              <div className="flex items-center gap-2 text-zinc-400">
                 <MapPin className="w-4 h-4 text-mat shrink-0" />
                 <span>{CONTACT_INFO.location}, South Africa</span>
               </div>
@@ -108,12 +107,12 @@ export default function Footer() {
 
         </div>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-chalk/40 font-mono">
-          <span>&copy; {new Date().getFullYear()} JFLIPS. All rights reserved.</span>
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-sans">
+          <span>&copy; {new Date().getFullYear()} JFLIPS Cheer &amp; Tumbling. All rights reserved.</span>
 
           <button
             onClick={handleScrollToTop}
-            className="group flex items-center gap-1.5 px-4 py-2 bg-chalk/5 border border-chalk/15 hover:border-chalk/30 text-chalk/50 hover:text-chalk transition-colors duration-150 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-white/5 border border-white/10 hover:border-white/20 text-zinc-400 hover:text-white transition-colors cursor-pointer text-xs"
             aria-label="Scroll back to top"
           >
             <span>Back to top</span>

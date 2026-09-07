@@ -67,54 +67,19 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-chalk text-ink scroll-mt-20">
+    <section id="contact" className="py-20 md:py-28 bg-[#f8fafc] text-ink scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         <div className="max-w-2xl mb-12">
-          <span className="tag">Contact</span>
-          <h2 className="font-display font-extrabold text-4xl md:text-5xl tracking-tight mt-4 text-ink">
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-tight text-ink">
             Get in touch
           </h2>
-          <p className="font-sans text-ink/70 mt-4 leading-relaxed">
-            Questions about school partnerships, private sessions, or schedules? Reach out directly.
-            We reply within 24 hours.
+          <p className="font-sans text-sm md:text-base text-zinc-600 mt-3 leading-relaxed">
+            Questions about school partnerships, private sessions, or schedules? Reach out directly. We reply within 24 hours.
           </p>
         </div>
 
-        {/* Direct WhatsApp Callout Banner */}
-        <div className="mb-14 p-6 md:p-8 bg-emerald-50 border-2 border-emerald-500/30 rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 bg-[#25D366] text-white rounded-full flex items-center justify-center shrink-0 shadow-sm mt-0.5">
-              <MessageCircle className="w-6 h-6 fill-current" />
-            </div>
-            <div>
-              <div className="inline-flex items-center gap-2 mb-1.5">
-                <span className="font-mono text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 bg-[#25D366]/20 text-emerald-800 rounded">
-                  Fastest Option
-                </span>
-                <span className="text-xs text-ink/60 font-medium">WhatsApp Coach Jeandré</span>
-              </div>
-              <h3 className="font-display font-bold text-xl md:text-2xl text-ink">
-                Prefer WhatsApp? Send us a direct message
-              </h3>
-              <p className="font-sans text-xs md:text-sm text-ink/75 mt-1 max-w-xl leading-relaxed">
-                Click to open WhatsApp with a pre-filled note: <span className="font-semibold text-ink">"Hi, I saw your website. I have a couple of questions."</span>
-              </p>
-            </div>
-          </div>
-
-          <a
-            href={WHATSAPP_LINKS.general}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full md:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-[#25D366] hover:bg-[#1faa4b] text-white font-sans font-bold text-xs uppercase tracking-widest rounded transition-colors shadow-sm shrink-0"
-          >
-            <MessageCircle className="w-4 h-4 fill-current" />
-            <span>Chat on WhatsApp</span>
-          </a>
-        </div>
-
-        <div className="grid lg:grid-cols-12 gap-12 md:gap-16 items-start">
+        <div className="grid lg:grid-cols-12 gap-10 md:gap-12 items-start">
 
           <div className="lg:col-span-5 flex flex-col gap-4">
 
@@ -122,43 +87,43 @@ export default function ContactSection() {
               href={WHATSAPP_LINKS.general}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-6 bg-white border-2 border-ink/10 hover:border-[#25D366] transition-colors duration-150 group"
+              className="flex items-center gap-4 p-5 bg-white border border-zinc-200 hover:border-emerald-500 transition-colors rounded-lg group"
             >
-              <div className="w-11 h-11 bg-emerald-50 text-[#25D366] flex items-center justify-center group-hover:bg-[#25D366] group-hover:text-white transition-colors duration-150 shrink-0">
+              <div className="w-10 h-10 bg-emerald-50 text-[#25D366] flex items-center justify-center group-hover:bg-[#25D366] group-hover:text-white transition-colors shrink-0 rounded">
                 <MessageCircle className="w-5 h-5 fill-current" />
               </div>
               <div>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-ink/40 block mb-0.5">WhatsApp / Call</span>
+                <span className="text-xs text-zinc-500 font-medium block mb-0.5">WhatsApp / Call</span>
                 <span className="font-display font-bold text-ink group-hover:text-emerald-700 transition-colors text-base">
                   {CONTACT_INFO.phoneFormatted}
                 </span>
-                <span className="block text-[11px] text-[#25D366] font-medium mt-0.5">
-                  Tap to chat on WhatsApp &rarr;
+                <span className="block text-xs text-emerald-600 font-medium mt-0.5">
+                  Tap to chat on WhatsApp
                 </span>
               </div>
             </a>
 
             <a
               href={`mailto:${CONTACT_INFO.email}`}
-              className="flex items-center gap-4 p-6 bg-white border-2 border-ink/10 hover:border-mat transition-colors duration-150 group"
+              className="flex items-center gap-4 p-5 bg-white border border-zinc-200 hover:border-mat transition-colors rounded-lg group"
             >
-              <div className="w-11 h-11 bg-chalk text-mat flex items-center justify-center group-hover:bg-mat group-hover:text-chalk transition-colors duration-150 shrink-0">
+              <div className="w-10 h-10 bg-zinc-100 text-mat flex items-center justify-center group-hover:bg-mat group-hover:text-white transition-colors shrink-0 rounded">
                 <Mail className="w-5 h-5" />
               </div>
               <div>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-ink/40 block mb-0.5">Email</span>
+                <span className="text-xs text-zinc-500 font-medium block mb-0.5">Email</span>
                 <span className="font-display font-bold text-ink group-hover:text-mat transition-colors text-base break-all">
                   {CONTACT_INFO.email}
                 </span>
               </div>
             </a>
 
-            <div className="flex items-center gap-4 p-6 bg-white border-2 border-ink/10">
-              <div className="w-11 h-11 bg-chalk text-mat flex items-center justify-center shrink-0">
+            <div className="flex items-center gap-4 p-5 bg-white border border-zinc-200 rounded-lg">
+              <div className="w-10 h-10 bg-zinc-100 text-mat flex items-center justify-center shrink-0 rounded">
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-ink/40 block mb-0.5">Based in</span>
+                <span className="text-xs text-zinc-500 font-medium block mb-0.5">Based in</span>
                 <span className="font-display font-bold text-ink text-base">
                   {CONTACT_INFO.address}
                 </span>
@@ -170,7 +135,7 @@ export default function ContactSection() {
                 href={CONTACT_INFO.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-4 border-2 border-ink/10 hover:border-mat text-ink/70 hover:text-mat font-sans font-semibold text-xs uppercase tracking-wider transition-colors duration-150"
+                className="flex-1 flex items-center justify-center gap-2 py-3 border border-zinc-200 bg-white hover:border-mat text-zinc-700 hover:text-mat font-sans font-semibold text-xs transition-colors rounded-lg"
               >
                 <Instagram className="w-4 h-4" />
                 <span>Instagram</span>
@@ -179,7 +144,7 @@ export default function ContactSection() {
                 href={CONTACT_INFO.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-4 border-2 border-ink/10 hover:border-mat text-ink/70 hover:text-mat font-sans font-semibold text-xs uppercase tracking-wider transition-colors duration-150"
+                className="flex-1 flex items-center justify-center gap-2 py-3 border border-zinc-200 bg-white hover:border-mat text-zinc-700 hover:text-mat font-sans font-semibold text-xs transition-colors rounded-lg"
               >
                 <Facebook className="w-4 h-4" />
                 <span>Facebook</span>
@@ -188,26 +153,26 @@ export default function ContactSection() {
 
           </div>
 
-          <div className="lg:col-span-7 bg-white p-8 md:p-10 border-2 border-ink/10 relative">
+          <div className="lg:col-span-7 bg-white p-6 md:p-8 border border-zinc-200 rounded-lg">
             {!isSuccess ? (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-ink/10 pb-3 gap-2">
-                  <h3 className="font-display font-bold text-xl text-ink">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-zinc-200 pb-3 gap-2">
+                  <h3 className="font-display font-bold text-lg text-ink">
                     Send a message
                   </h3>
                   <a
                     href={WHATSAPP_LINKS.general}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
                     <span>Or chat on WhatsApp instead</span>
                   </a>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10px] uppercase tracking-widest text-ink/40" htmlFor="contactName">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-zinc-700" htmlFor="contactName">
                     Your name
                   </label>
                   <input
@@ -217,12 +182,12 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Sandra Ndlovu"
-                    className="bg-chalk border-2 border-ink/10 px-4 py-3 text-sm text-ink focus:outline-none focus:border-mat transition-colors"
+                    className="bg-zinc-50 border border-zinc-300 rounded px-3.5 py-2.5 text-sm text-ink focus:outline-none focus:border-mat transition-colors"
                   />
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10px] uppercase tracking-widest text-ink/40" htmlFor="contactEmail">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-zinc-700" htmlFor="contactEmail">
                     Email address
                   </label>
                   <input
@@ -232,19 +197,19 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="e.g. sandra@school.co.za"
-                    className="bg-chalk border-2 border-ink/10 px-4 py-3 text-sm text-ink focus:outline-none focus:border-mat transition-colors"
+                    className="bg-zinc-50 border border-zinc-300 rounded px-3.5 py-2.5 text-sm text-ink focus:outline-none focus:border-mat transition-colors"
                   />
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10px] uppercase tracking-widest text-ink/40" htmlFor="contactSubject">
-                    What's this about
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-zinc-700" htmlFor="contactSubject">
+                    Subject
                   </label>
                   <select
                     id="contactSubject"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="bg-chalk border-2 border-ink/10 px-4 py-3 text-sm text-ink focus:outline-none focus:border-mat transition-colors"
+                    className="bg-zinc-50 border border-zinc-300 rounded px-3.5 py-2.5 text-sm text-ink focus:outline-none focus:border-mat transition-colors"
                   >
                     <option value="General Inquiry">General question</option>
                     <option value="Merchandise Order">Merchandise order / inquiry</option>
@@ -254,8 +219,8 @@ export default function ContactSection() {
                   </select>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label className="font-mono text-[10px] uppercase tracking-widest text-ink/40" htmlFor="contactMessage">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-medium text-zinc-700" htmlFor="contactMessage">
                     Message
                   </label>
                   <textarea
@@ -265,12 +230,12 @@ export default function ContactSection() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="What can we help with?"
-                    className="bg-chalk border-2 border-ink/10 px-4 py-3 text-sm text-ink focus:outline-none focus:border-mat transition-colors resize-none"
+                    className="bg-zinc-50 border border-zinc-300 rounded px-3.5 py-2.5 text-sm text-ink focus:outline-none focus:border-mat transition-colors resize-none"
                   />
                 </div>
 
                 {errorMessage && (
-                  <div className="p-4 bg-amber-50 border border-amber-200 text-amber-900 rounded text-xs flex items-start gap-3">
+                  <div className="p-3.5 bg-amber-50 border border-amber-200 text-amber-900 rounded text-xs flex items-start gap-2.5">
                     <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                     <div className="flex-1">
                       <p className="font-sans leading-relaxed">{errorMessage}</p>
@@ -278,7 +243,7 @@ export default function ContactSection() {
                         href={`https://wa.me/27${CONTACT_INFO.phone.startsWith('0') ? CONTACT_INFO.phone.slice(1) : CONTACT_INFO.phone}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 mt-2 text-mat font-bold hover:underline"
+                        className="inline-flex items-center gap-1.5 mt-2 text-mat font-semibold hover:underline"
                       >
                         <MessageCircle className="w-3.5 h-3.5" />
                         <span>Chat with us on WhatsApp instead</span>
@@ -290,11 +255,11 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="relative w-full bg-ink hover:bg-ink-soft disabled:opacity-50 text-chalk font-sans font-bold text-xs uppercase tracking-widest py-4 transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full bg-ink hover:bg-mat disabled:opacity-50 text-white font-sans font-semibold text-xs py-3.5 transition-colors flex items-center justify-center gap-2 rounded cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-chalk/30 border-t-chalk rounded-full animate-spin" />
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       <span>Sending inquiry...</span>
                     </>
                   ) : (
@@ -306,18 +271,18 @@ export default function ContactSection() {
                 </button>
               </form>
             ) : (
-              <div className="flex flex-col items-center text-center py-10 px-4">
-                <div className="w-16 h-16 bg-emerald-600 text-chalk rounded-full flex items-center justify-center mb-6 shadow-sm">
-                  <CheckCircle2 className="w-9 h-9" />
+              <div className="flex flex-col items-center text-center py-8 px-4">
+                <div className="w-14 h-14 bg-emerald-600 text-white rounded-full flex items-center justify-center mb-5">
+                  <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="font-display font-extrabold text-2xl md:text-3xl mb-3 text-ink">
-                  Inquiry Sent Successfully!
+                <h3 className="font-display font-bold text-2xl mb-2 text-ink">
+                  Inquiry Sent
                 </h3>
-                <p className="font-sans text-sm text-ink/75 leading-relaxed max-w-md mb-2">
-                  Thank you, <strong className="text-ink font-semibold">{submittedInfo?.name || 'there'}</strong>! Your message regarding <strong className="text-ink font-semibold">"{submittedInfo?.subject || 'Inquiry'}"</strong> has been sent directly to the JFLIPS coaching team.
+                <p className="font-sans text-sm text-zinc-600 leading-relaxed max-w-md mb-1">
+                  Thank you, <strong className="text-ink font-semibold">{submittedInfo?.name || 'there'}</strong>. Your message regarding <strong className="text-ink font-semibold">"{submittedInfo?.subject || 'Inquiry'}"</strong> has been sent to the JFLIPS coaching team.
                 </p>
-                <p className="font-sans text-xs text-ink/60 leading-relaxed max-w-md mb-8">
-                  We will review your inquiry and reply to <span className="font-mono text-mat font-medium">{submittedInfo?.email}</span> within 24 hours.
+                <p className="font-sans text-xs text-zinc-500 leading-relaxed max-w-md mb-6">
+                  We will review your inquiry and reply to <span className="text-mat font-medium">{submittedInfo?.email}</span> within 24 hours.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-3">
                   <button
@@ -326,7 +291,7 @@ export default function ContactSection() {
                       setSubmittedInfo(null);
                       setErrorMessage(null);
                     }}
-                    className="font-sans font-semibold text-xs uppercase tracking-widest px-6 py-3 bg-ink text-chalk hover:bg-mat transition-colors rounded cursor-pointer"
+                    className="font-sans font-semibold text-xs px-5 py-2.5 bg-ink text-white hover:bg-mat transition-colors rounded cursor-pointer"
                   >
                     Send another message
                   </button>
@@ -334,7 +299,7 @@ export default function ContactSection() {
                     href={`https://wa.me/27${CONTACT_INFO.phone.startsWith('0') ? CONTACT_INFO.phone.slice(1) : CONTACT_INFO.phone}?text=${encodeURIComponent("Hi JFLIPS, I just sent an inquiry on your website and would also like to connect on WhatsApp.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-sans font-semibold text-xs uppercase tracking-widest px-5 py-3 border border-ink/20 text-ink hover:bg-chalk transition-colors rounded inline-flex items-center gap-1.5"
+                    className="font-sans font-semibold text-xs px-4 py-2.5 border border-zinc-300 text-ink hover:bg-zinc-50 transition-colors rounded inline-flex items-center gap-1.5"
                   >
                     <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
                     <span>WhatsApp Coach</span>

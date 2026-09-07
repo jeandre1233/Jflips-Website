@@ -29,9 +29,8 @@ export const WHATSAPP_LINKS = {
 
 export const NAVIGATION_LINKS = [
   { label: "Home", href: "#home" },
-  { label: "Schools", href: "#schools" },
-  { label: "Parents", href: "#parents" },
   { label: "Programs", href: "#programs" },
+  { label: "Schools", href: "#schools" },
   { label: "Merch", href: "#merch" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },

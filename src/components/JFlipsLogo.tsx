@@ -37,7 +37,7 @@ export default function JFlipsLogo({ className = '', showText = true, size = 'md
           <span className="font-display font-extrabold text-2xl tracking-tight text-ink">
             JFLIPS
           </span>
-          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-ink/50 font-semibold mt-1">
+          <span className="font-sans text-[11px] text-ink/60 font-medium tracking-normal mt-0.5">
             Cheer &amp; Tumbling
           </span>
         </div>

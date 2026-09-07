@@ -3,115 +3,76 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ArrowUpRight, CheckCircle2, FileText, MapPin, Calendar, DollarSign, MessageCircle } from 'lucide-react';
+import { CheckCircle2, MessageCircle } from 'lucide-react';
 import { WHATSAPP_LINKS } from '../lib/constants';
 
 export default function RegisterInterestForm() {
   return (
-    <section id="register" className="py-24 md:py-32 bg-ink text-chalk relative overflow-hidden scroll-mt-20">
-      <div className="absolute inset-0 halftone-light opacity-[0.06] pointer-events-none" />
-
+    <section id="register" className="py-20 md:py-28 bg-[#0b132b] text-white relative scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            <span className="tag tag-flame self-start">Get Connected</span>
-            <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight text-chalk leading-none">
+          <div className="lg:col-span-5 flex flex-col gap-5">
+            <h2 className="font-display font-extrabold text-3xl md:text-5xl tracking-tight text-white leading-tight">
               Connect with Coach Jeandré
             </h2>
-            <p className="font-sans text-chalk/70 text-base leading-relaxed">
-              We connect directly with every parent and athlete before enrollment. Tap either option
-              on the right to start a WhatsApp chat with Coach Jeandré with your team or class preference pre-filled.
+            <p className="font-sans text-zinc-300 text-sm md:text-base leading-relaxed">
+              We connect directly with every parent and athlete before enrollment to understand current skill level, goals, and class placement.
             </p>
 
-            <div className="p-6 bg-chalk/5 border border-chalk/10 mt-4 flex items-start gap-4">
-              <div className="p-3 bg-mat/20 text-mat shrink-0">
-                <CheckCircle2 className="w-6 h-6" />
+            <div className="p-5 bg-white/5 border border-white/10 rounded-lg mt-2 flex items-start gap-3.5">
+              <div className="p-2 bg-mat/20 text-mat shrink-0 rounded">
+                <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-display font-bold text-sm text-chalk mb-1">Personalized onboarding</h4>
-                <p className="text-xs text-chalk/60 leading-relaxed">
-                  We'll discuss your athlete's skill level, trial class schedules, gear requirements,
-                  and answer all your questions directly on WhatsApp.
+                <h4 className="font-display font-bold text-sm text-white mb-1">Direct coach consultation</h4>
+                <p className="text-xs text-zinc-400 leading-relaxed">
+                  We discuss your athlete's experience, trial sessions, and answer all parent questions directly on WhatsApp.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-chalk/10 border-2 border-chalk/10">
-            <div className="bg-ink p-8 flex flex-col justify-between">
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+            <div className="bg-white/5 border border-white/10 rounded-lg p-6 md:p-8 flex flex-col justify-between">
               <div>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-flame font-bold">Team</span>
-                <h3 className="font-display font-extrabold text-2xl text-chalk mt-2 mb-3 tracking-tight">Cheerleading</h3>
-                <p className="text-xs text-chalk/60 leading-relaxed mb-6">
-                  Join South Africa's most exciting cheerleading and tumbling team. Open to ages 4–18+,
-                  Level 1–4 stunting taught safely.
+                <span className="text-xs font-semibold text-flame block mb-1">Team Program</span>
+                <h3 className="font-display font-bold text-2xl text-white mb-3 tracking-tight">Cheerleading</h3>
+                <p className="text-xs text-zinc-300 leading-relaxed mb-6">
+                  Competitive cheerleading team in Krugersdorp. Open to ages 4–18+, Level 1–4 stunting taught with accredited safety guidelines.
                 </p>
               </div>
-              <div className="flex flex-col gap-4 mt-4">
+              <div className="mt-4">
                 <a
                   href={WHATSAPP_LINKS.cheer}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center bg-mat hover:bg-mat-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-colors duration-150 rounded"
+                  className="w-full text-center bg-mat hover:bg-mat-deep text-white font-sans font-semibold text-xs py-3 flex items-center justify-center gap-2 transition-colors rounded"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  Join Cheer on WhatsApp
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  Inquire about cheer
                 </a>
               </div>
             </div>
 
-            <div className="bg-ink p-8 flex flex-col justify-between">
+            <div className="bg-white/5 border border-white/10 rounded-lg p-6 md:p-8 flex flex-col justify-between">
               <div>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-flame font-bold">Class</span>
-                <h3 className="font-display font-extrabold text-2xl text-chalk mt-2 mb-2 tracking-tight">Tumbling</h3>
-                
-                {/* Parent Info Sheet Quick Card */}
-                <div className="my-4 p-3.5 bg-chalk/5 border border-chalk/10 rounded text-[11px] space-y-1.5">
-                  <div className="flex items-center gap-2 text-chalk/80">
-                    <MapPin className="w-3.5 h-3.5 text-flame shrink-0" />
-                    <span>Laerskool Muldersdrift</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-chalk/80">
-                    <Calendar className="w-3.5 h-3.5 text-flame shrink-0" />
-                    <span>Wed & Thu (2:00–3:00 PM) | Fri (4:00–5:00 PM)</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-chalk/80">
-                    <DollarSign className="w-3.5 h-3.5 text-flame shrink-0" />
-                    <span>R200/session (or R350/session 1-on-1 private)</span>
-                  </div>
-                  <p className="text-[10px] text-chalk/60 italic pt-1 border-t border-chalk/10 leading-tight">
-                    *Looking to add even more days as numbers grow!
-                  </p>
-                </div>
-
-                <p className="text-xs text-chalk/60 leading-relaxed mb-4">
-                  Master back handsprings, flips, and layouts in structured classes. Great for dancers,
-                  cheerleaders, gymnasts, and total beginners.
+                <span className="text-xs font-semibold text-flame block mb-1">Weekly Classes</span>
+                <h3 className="font-display font-bold text-2xl text-white mb-3 tracking-tight">Tumbling</h3>
+                <p className="text-xs text-zinc-300 leading-relaxed mb-6">
+                  Floor acrobatics, back handsprings, tucks, and layouts with progressions suitable for gymnasts, dancers, and beginners.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 mt-4">
+              <div className="mt-4">
                 <a
                   href={WHATSAPP_LINKS.tumbling}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-colors duration-150 rounded"
+                  className="w-full text-center bg-flame hover:bg-flame-deep text-white font-sans font-semibold text-xs py-3 flex items-center justify-center gap-2 transition-colors rounded"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  Join Tumbling on WhatsApp
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-
-                <a
-                  href="/tumbling_info.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full text-center border border-chalk/20 hover:border-chalk/50 text-chalk/80 hover:text-chalk font-sans font-semibold text-[10px] uppercase tracking-wider py-2 transition-colors flex items-center justify-center gap-1.5 rounded"
-                >
-                  <FileText className="w-3.5 h-3.5 text-flame" />
-                  View Tumbling Info Sheet PDF
+                  Inquire about tumbling
                 </a>
               </div>
             </div>

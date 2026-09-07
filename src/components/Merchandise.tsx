@@ -3,275 +3,352 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { 
   ShoppingBag, 
   MessageCircle, 
-  Mail, 
-  Sparkles, 
-  Check, 
-  Ruler, 
-  CreditCard, 
-  Truck,
-  ArrowUpRight,
-  ShieldCheck,
-  PackageCheck
+  ChevronLeft, 
+  ChevronRight, 
+  Camera 
 } from 'lucide-react';
 import { CONTACT_INFO } from '../lib/constants';
-import generatedShirtImg from '../assets/images/jflips_team_shirt_1788446999155.jpg';
+
+// When ready to launch the merchandise with live photos, toggle this to true
+const LAUNCH_MERCH_IMAGES = false;
+
+interface ProductImage {
+  label: string;
+  sublabel: string;
+  src?: string;
+  isPlaceholder: boolean;
+}
+
+interface ProductItem {
+  id: string;
+  name: string;
+  category: string;
+  badge: string;
+  status: 'preorder' | 'coming_soon';
+  statusLabel: string;
+  sizes: string;
+  description: string;
+  whatsappMessage: string;
+  images: ProductImage[];
+}
 
 export default function Merchandise() {
-  // Use user-uploaded official shirt in public/Merch/official_shirt.jpeg with fallback to generated asset
-  const [imgSrc, setImgSrc] = useState<string>('/Merch/official_shirt.jpeg');
+  const [imageErrorMap, setImageErrorMap] = useState<{ [src: string]: boolean }>({});
+
+  // Track active photo index per product (used when images are live)
+  const [cardPhotoIndex, setCardPhotoIndex] = useState<{ [productId: string]: number }>({
+    shirt: 0,
+    hoodie: 0,
+    socks: 0,
+  });
 
   const rawNumber = CONTACT_INFO.phone.startsWith('0') 
     ? `27${CONTACT_INFO.phone.slice(1)}` 
     : CONTACT_INFO.phone;
 
-  const whatsAppMessage = `Hi JFLIPS! I would like to enquire about ordering the official JFLIPS "Flip Fearless. Live Limitless." shirt. What sizes and pricing do you have available?`;
-  const whatsAppLink = `https://wa.me/${rawNumber}?text=${encodeURIComponent(whatsAppMessage)}`;
-
-  const handleInquireViaForm = () => {
-    window.dispatchEvent(
-      new CustomEvent('jflips:prefill-contact', {
-        detail: {
-          subject: 'Merchandise Order - Official Shirt',
-          message: `Hi JFLIPS Team,\n\nI would like to enquire about ordering the Official JFLIPS "Flip Fearless. Live Limitless." Shirt.\n• Athlete / Supporter Name:\n• Size needed (Kids 4–14 or Adult XS–3XL):\n• Quantity:\n\nPlease send me availability, pricing, and payment info. Thank you!`,
+  const PRODUCTS: ProductItem[] = [
+    {
+      id: 'shirt',
+      name: 'Official JFLIPS Athletic Tee',
+      category: 'Team apparel',
+      badge: 'Official team',
+      status: 'coming_soon',
+      statusLabel: 'Coming soon',
+      sizes: 'Kids 4–14, Adult XS–3XL',
+      description: 'Lightweight performance shirt with front chest crest and "Flip Fearless, Live Limitless" back motto.',
+      whatsappMessage: 'Hi Coach Jeandré, I am interested in the upcoming JFLIPS Athletic Tee. Please let me know when pre-orders open.',
+      images: [
+        {
+          label: 'Front View',
+          sublabel: 'Official Team Crest',
+          src: '/Merch/Front.jpeg',
+          isPlaceholder: false,
         },
-      })
-    );
+        {
+          label: 'Back View',
+          sublabel: 'Flip Fearless Motto',
+          src: '/Merch/Back.jpeg',
+          isPlaceholder: false,
+        },
+        {
+          label: 'Athlete Photo',
+          sublabel: 'In-action photo',
+          isPlaceholder: true,
+        },
+      ],
+    },
+    {
+      id: 'hoodie',
+      name: 'JFLIPS Team Pullover Hoodie',
+      category: 'Warm-up gear',
+      badge: 'Upcoming',
+      status: 'coming_soon',
+      statusLabel: 'Coming soon',
+      sizes: 'Kids and adult unisex sizes',
+      description: 'Heavyweight fleece pullover with double-lined hood and JFLIPS team graphics.',
+      whatsappMessage: 'Hi Coach Jeandré, I am interested in the upcoming JFLIPS Team Pullover Hoodie. Please let me know when pre-orders open.',
+      images: [
+        {
+          label: 'Product Design',
+          sublabel: 'Design preview',
+          isPlaceholder: true,
+        },
+        {
+          label: 'Athlete Standing',
+          sublabel: 'Fit preview',
+          isPlaceholder: true,
+        },
+        {
+          label: 'Athlete Stunting',
+          sublabel: 'Training photo',
+          isPlaceholder: true,
+        },
+      ],
+    },
+    {
+      id: 'socks',
+      name: 'Stunt & Tumbling Grip Socks',
+      category: 'Accessories',
+      badge: 'Training gear',
+      status: 'coming_soon',
+      statusLabel: 'Coming soon',
+      sizes: 'Junior and adult sizes',
+      description: 'High-traction silicone grip socks designed for air tracks, tumbling mats, and flyer stability.',
+      whatsappMessage: 'Hi Coach Jeandré, I am interested in the upcoming JFLIPS Stunt & Tumbling Grip Socks. Please let me know when stock arrives.',
+      images: [
+        {
+          label: 'Grip Socks',
+          sublabel: 'Official JFLIPS Grip Socks',
+          src: '/Merch/socks.png',
+          isPlaceholder: false,
+        },
+        {
+          label: 'Athlete Standing',
+          sublabel: 'Grip design',
+          isPlaceholder: true,
+        },
+        {
+          label: 'Mat Traction',
+          sublabel: 'Training photo',
+          isPlaceholder: true,
+        },
+      ],
+    },
+  ];
 
-    const contactElem = document.querySelector('#contact');
-    if (contactElem) {
-      const headerOffset = 80;
-      const elementPosition = contactElem.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-    }
+  const handlePrev = (e: React.MouseEvent, productId: string, totalImages: number) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setCardPhotoIndex((prev) => {
+      const current = prev[productId] || 0;
+      return {
+        ...prev,
+        [productId]: current === 0 ? totalImages - 1 : current - 1,
+      };
+    });
+  };
+
+  const handleNext = (e: React.MouseEvent, productId: string, totalImages: number) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setCardPhotoIndex((prev) => {
+      const current = prev[productId] || 0;
+      return {
+        ...prev,
+        [productId]: (current + 1) % totalImages,
+      };
+    });
+  };
+
+  const handleSetIndex = (e: React.MouseEvent, productId: string, index: number) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setCardPhotoIndex((prev) => ({
+      ...prev,
+      [productId]: index,
+    }));
   };
 
   return (
-    <section id="merch" className="py-24 md:py-32 bg-[#faf7fc] text-ink scroll-mt-20 border-t-2 border-ink/10">
+    <section id="merch" className="py-20 md:py-28 bg-white text-ink scroll-mt-20 border-t border-zinc-200">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-flame mb-2">
-              <ShoppingBag className="w-4 h-4" />
-              <span className="font-mono text-xs uppercase tracking-widest font-bold">Official Team Merch</span>
-            </div>
-            <h2 className="font-display font-extrabold text-3xl md:text-5xl tracking-tight text-ink leading-tight">
-              JFLIPS Official Merchandise
-            </h2>
-            <p className="font-sans text-base md:text-lg text-ink/70 mt-3 leading-relaxed">
-              Official athlete training and supporter apparel. High-performance, breathable moisture-wicking gear built for tumbling, cheer practice, and game days.
-            </p>
-          </div>
-
-          {/* Quick Badges */}
-          <div className="flex flex-wrap gap-4 text-xs font-sans text-ink/80 bg-white p-4 border border-ink/10 rounded shadow-sm">
-            <div className="flex items-center gap-2">
-              <Truck className="w-4 h-4 text-flame shrink-0" />
-              <span>Collect at Muldersdrift practice or local delivery</span>
-            </div>
-            <div className="hidden sm:block text-ink/20">|</div>
-            <div className="flex items-center gap-2">
-              <CreditCard className="w-4 h-4 text-mat shrink-0" />
-              <span>EFT & Direct Payment</span>
-            </div>
-          </div>
+        <div className="pb-6 mb-12 border-b border-zinc-200">
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-tight text-ink">
+            Official team apparel &amp; gear
+          </h2>
+          <p className="font-sans text-sm text-zinc-600 mt-2">
+            Athlete training apparel and team merchandise. Coming soon — chat directly with Coach Jeandré on WhatsApp for launch inquiries.
+          </p>
         </div>
 
-        {/* Featured Product Card */}
-        <div className="bg-white border-2 border-ink/15 rounded shadow-sm overflow-hidden mb-12">
-          <div className="grid lg:grid-cols-12 gap-0">
+        {/* Product Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {PRODUCTS.map((product) => {
+            const activeIdx = cardPhotoIndex[product.id] || 0;
+            const currentImg = product.images[activeIdx] || product.images[0];
+            const whatsAppUrl = `https://wa.me/${rawNumber}?text=${encodeURIComponent(product.whatsappMessage)}`;
 
-            {/* Left: Product Image Showcase */}
-            <div className="lg:col-span-7 bg-[#f3f0f7] border-b lg:border-b-0 lg:border-r border-ink/10 p-6 md:p-8 flex flex-col justify-center items-center">
-              <div className="w-full relative rounded overflow-hidden border border-ink/10 bg-white shadow-sm">
-                <img
-                  src={imgSrc}
-                  alt="Official JFLIPS Athletic Shirt - Front and Back"
-                  className="w-full h-auto object-cover max-h-[460px] mx-auto transition-transform duration-300 hover:scale-[1.02]"
-                  referrerPolicy="no-referrer"
-                  onError={() => {
-                    // If custom upload isn't there yet, keep generated shirt image
-                    if (imgSrc !== generatedShirtImg) {
-                      setImgSrc(generatedShirtImg);
-                    }
-                  }}
-                />
-                <div className="absolute top-3 left-3 bg-ink/90 backdrop-blur-sm text-chalk px-3 py-1 rounded text-[10px] font-mono uppercase tracking-widest font-bold">
-                  Official Team Jersey
-                </div>
-                <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-ink px-3 py-1 rounded text-[10px] font-sans font-semibold border border-ink/10">
-                  Front & Back Views
-                </div>
-              </div>
-
-              <div className="mt-4 flex items-center justify-between w-full text-xs text-ink/60 font-sans">
-                <span>Front: JFlips Crest • Back: "Flip Fearless. Live Limitless."</span>
-                <span className="text-mat font-semibold">Sublimated Athletic Print</span>
-              </div>
-            </div>
-
-            {/* Right: Product Details & Order Actions */}
-            <div className="lg:col-span-5 p-6 md:p-10 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-flame font-bold">
-                    Official Apparel
-                  </span>
-                  <span className="font-mono text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded bg-mat/10 text-mat">
-                    Available for Pre-Order
-                  </span>
-                </div>
-
-                <h3 className="font-display font-extrabold text-2xl md:text-3xl text-ink tracking-tight mb-2">
-                  Official JFLIPS Training & Supporter Shirt
-                </h3>
-
-                <div className="mb-6 p-3 bg-chalk rounded border border-ink/10">
-                  <div className="text-xs font-sans text-ink/70">
-                    <strong className="text-ink font-semibold">Pricing & Sizing:</strong> Inquire directly with our team to confirm child or adult sizing and reserve your piece from the next batch.
-                  </div>
-                </div>
-
-                <p className="font-sans text-sm text-ink/75 leading-relaxed mb-6">
-                  Engineered with breathable, lightweight athletic fabric. Features our signature royal blue splash pattern, high-contrast JFlips chest insignia, and the team motto across the shoulders: <strong className="text-ink font-semibold">"FLIP FEARLESS. LIVE LIMITLESS."</strong>
-                </p>
-
-                {/* Specs List */}
-                <div className="space-y-3 pt-4 border-t border-ink/10 text-xs">
-                  <div className="flex items-start gap-2.5 text-ink/80">
-                    <Ruler className="w-4 h-4 text-flame shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-ink font-semibold">Available Sizes:</strong> Kids (4–14 years) and Adult (XS through 3XL).
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-2.5 text-ink/80">
-                    <Sparkles className="w-4 h-4 text-mat shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-ink font-semibold">Design & Color:</strong> Crisp White base with royal blue splash sublimation and royal blue neck trim.
-                    </div>
-                  </div>
-
-                  <div className="bg-[#f5f1fa] p-3.5 rounded text-[11px] text-ink/80 space-y-1.5 mt-2 border border-ink/5">
-                    <div className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                      <span>Breathable, moisture-wicking dry-fit performance fabric</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                      <span>Fade-resistant sublimation printing that won't crack or peel</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                      <span>Tailored unisex athletic fit suitable for stunts, tumbling, or casual wear</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-8 border-t border-ink/10 mt-8 space-y-3">
-                <a
-                  href={whatsAppLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-sans font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded flex items-center justify-center gap-2 transition-colors duration-150 shadow-sm"
+            return (
+              <div
+                key={product.id}
+                className="group bg-white border border-zinc-200 rounded-lg overflow-hidden flex flex-col justify-between shadow-xs"
+              >
+                {/* Image Stage Container with Fixed Aspect Ratio */}
+                <div 
+                  className="relative aspect-[3/4] bg-zinc-100 overflow-hidden cursor-pointer select-none"
+                  onClick={() => window.open(whatsAppUrl, '_blank', 'noopener,noreferrer')}
                 >
-                  <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Enquire / Order via WhatsApp</span>
-                </a>
+                  {/* When merch is live, show images with navigation. Otherwise, show Coming Soon placeholder */}
+                  {LAUNCH_MERCH_IMAGES ? (
+                    <>
+                      {!currentImg.isPlaceholder && currentImg.src && !imageErrorMap[currentImg.src] ? (
+                        <img
+                          src={currentImg.src}
+                          alt={`${product.name} - ${currentImg.label}`}
+                          className="w-full h-full object-cover object-center"
+                          referrerPolicy="no-referrer"
+                          onError={() => {
+                            setImageErrorMap((prev) => ({
+                              ...prev,
+                              [currentImg.src!]: true,
+                            }));
+                          }}
+                        />
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-zinc-50">
+                          <div className="w-12 h-12 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-3 text-zinc-400">
+                            <Camera className="w-5 h-5 text-mat" />
+                          </div>
+                          <span className="text-xs font-semibold px-2.5 py-0.5 bg-zinc-200 text-zinc-700 rounded mb-1.5">
+                            Photo preview
+                          </span>
+                          <h4 className="font-display font-bold text-sm text-ink">
+                            {currentImg.label}
+                          </h4>
+                          <p className="font-sans text-xs text-zinc-500 max-w-[200px] mt-1">
+                            Upcoming photo ({activeIdx + 1} of {product.images.length})
+                          </p>
+                        </div>
+                      )}
 
-                <button
-                  type="button"
-                  onClick={handleInquireViaForm}
-                  className="w-full bg-ink hover:bg-mat text-chalk font-sans font-semibold text-xs uppercase tracking-wider py-3 px-4 rounded flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                >
-                  <Mail className="w-4 h-4 text-flame" />
-                  <span>Enquire via Website Form</span>
-                </button>
+                      {/* Top-Left Category Badge */}
+                      <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10 pointer-events-none">
+                        <span className="text-xs font-medium px-2 py-0.5 bg-zinc-900/90 text-white rounded">
+                          {product.statusLabel}
+                        </span>
+                      </div>
+
+                      {/* Image Navigation Arrows */}
+                      <button
+                        type="button"
+                        onClick={(e) => handlePrev(e, product.id, product.images.length)}
+                        aria-label="Previous photo"
+                        className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-zinc-900/80 hover:bg-zinc-900 text-white flex items-center justify-center z-20 cursor-pointer shadow-xs"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => handleNext(e, product.id, product.images.length)}
+                        aria-label="Next photo"
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-zinc-900/80 hover:bg-zinc-900 text-white flex items-center justify-center z-20 cursor-pointer shadow-xs"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+
+                      {/* Pagination Dots Indicator */}
+                      <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-1.5 z-20">
+                        {product.images.map((img, dotIdx) => (
+                          <button
+                            key={dotIdx}
+                            type="button"
+                            onClick={(e) => handleSetIndex(e, product.id, dotIdx)}
+                            aria-label={`View photo ${dotIdx + 1} - ${img.label}`}
+                            className={`h-1.5 rounded-full transition-all duration-150 cursor-pointer ${
+                              dotIdx === activeIdx
+                                ? 'w-5 bg-white shadow-xs ring-1 ring-black/20'
+                                : 'w-1.5 bg-white/60 hover:bg-white/90'
+                            }`}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Photo Title Overlay on bottom right */}
+                      <div className="absolute bottom-3 right-3 z-10 pointer-events-none">
+                        <span className="text-[10px] bg-black/70 text-white px-2 py-0.5 rounded font-medium">
+                          {activeIdx + 1} of {product.images.length} — {currentImg.label}
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    /* Clean Coming Soon Placeholder for Pre-launch */
+                    <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-zinc-50 border-b border-zinc-200">
+                      <div className="w-14 h-14 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-3.5 shadow-xs">
+                        <ShoppingBag className="w-6 h-6 text-mat" />
+                      </div>
+                      <span className="text-xs font-semibold px-3 py-1 bg-zinc-200 text-zinc-800 rounded-full mb-2">
+                        Coming soon
+                      </span>
+                      <h4 className="font-display font-bold text-base text-ink tracking-tight">
+                        {product.name}
+                      </h4>
+                      <p className="font-sans text-xs text-zinc-500 max-w-[220px] mt-1.5 leading-relaxed">
+                        Official product photos and pre-orders will be available at launch.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Card Information & Action Area */}
+                <div className="p-5 flex flex-col justify-between flex-1 bg-white">
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <span className="text-xs text-zinc-500 font-medium">
+                        {product.category}
+                      </span>
+                      <span className="text-xs font-semibold text-mat">
+                        {product.sizes}
+                      </span>
+                    </div>
+
+                    <h3 className="font-display font-bold text-lg text-ink tracking-tight">
+                      {product.name}
+                    </h3>
+
+                    <p className="font-sans text-xs text-zinc-600 mt-2 line-clamp-2 leading-relaxed">
+                      {product.description}
+                    </p>
+                  </div>
+
+                  {/* CTA Action Button: Send to WhatsApp */}
+                  <div className="mt-5 pt-4 border-t border-zinc-100">
+                    <a
+                      href={whatsAppUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-2 bg-ink hover:bg-mat text-white font-sans font-semibold text-xs py-2.5 px-4 rounded transition-colors"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      <span>Inquire on WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
               </div>
-
-            </div>
-          </div>
+            );
+          })}
         </div>
 
-        {/* How To Order & Upcoming Merch Banner */}
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 md:p-8 bg-white rounded border border-ink/10 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="inline-flex items-center gap-2 text-flame mb-2">
-                <PackageCheck className="w-4 h-4" />
-                <span className="font-mono text-xs uppercase tracking-widest font-bold">How Ordering Works</span>
-              </div>
-              <h4 className="font-display font-bold text-xl text-ink mb-3">
-                Direct & Personalised Ordering
-              </h4>
-              <p className="font-sans text-xs md:text-sm text-ink/70 leading-relaxed mb-4">
-                Because exact sizing is crucial for comfortable training, we confirm all orders directly with athletes and parents. Tell us your size and required quantity via WhatsApp or our contact form.
-              </p>
-              <div className="space-y-2 text-xs text-ink/80">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-flame/15 text-flame font-bold flex items-center justify-center text-[10px]">1</div>
-                  <span>Send your size and quantity via WhatsApp or form</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-mat/15 text-mat font-bold flex items-center justify-center text-[10px]">2</div>
-                  <span>Receive confirmation & easy EFT invoice</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-[10px]">3</div>
-                  <span>Collect directly at your next Muldersdrift practice session</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="p-6 md:p-8 bg-ink text-chalk rounded border-2 border-ink shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="inline-flex items-center gap-2 text-flame mb-2">
-                <Sparkles className="w-4 h-4" />
-                <span className="font-mono text-xs uppercase tracking-widest font-bold">Coming Soon</span>
-              </div>
-              <h4 className="font-display font-bold text-xl text-chalk mb-3">
-                More Team Merch In The Works
-              </h4>
-              <p className="font-sans text-xs md:text-sm text-chalk/70 leading-relaxed mb-6">
-                We are currently preparing more official JFLIPS gear including team hoodies, athlete accessories, and squad uniforms. Stay tuned as new items and pricing are added!
-              </p>
-            </div>
-
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                window.dispatchEvent(
-                  new CustomEvent('jflips:prefill-contact', {
-                    detail: {
-                      subject: 'Merchandise Order',
-                      message: 'Hi JFLIPS, I would like to enquire about upcoming merchandise and custom team gear.',
-                    },
-                  })
-                );
-                const contactElem = document.querySelector('#contact');
-                if (contactElem) {
-                  const headerOffset = 80;
-                  const elementPosition = contactElem.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                  window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                }
-              }}
-              className="w-full bg-chalk/10 hover:bg-chalk/20 text-chalk font-sans font-semibold text-xs uppercase tracking-wider py-3 px-4 rounded flex items-center justify-center gap-2 transition-colors border border-chalk/20"
-            >
-              <span>Have a Custom Request? Contact Us</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
-          </div>
+        {/* Bottom Note */}
+        <div className="mt-10 text-center">
+          <p className="font-sans text-xs text-zinc-500">
+            For custom team batch orders or athlete sizes, chat with Coach Jeandré directly on WhatsApp.
+          </p>
         </div>
 
       </div>

@@ -7,9 +7,8 @@ import SEO from './components/SEO';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Mission from './components/Mission';
-import TumblingSchedule from './components/TumblingSchedule';
-import Partnership from './components/Partnership';
 import Programs from './components/Programs';
+import Partnership from './components/Partnership';
 import Merchandise from './components/Merchandise';
 import About from './components/About';
 import RegisterInterestForm from './components/RegisterInterestForm';
@@ -48,28 +47,25 @@ export default function App() {
       {/* 4. Tight Mission Section: Statement + Combined Values/Benefits Grid */}
       <Mission />
 
-      {/* 5. Tumbling Classes Schedule & Info (Wed, Thu & Fri times) */}
-      <TumblingSchedule />
+      {/* 5. Available Programs: 50/50 Tumbling & Cheerleading */}
+      <Programs onContactClick={() => handleScrollToSection('#contact')} />
 
       {/* 6. Comparison Table for Institutional school integrations */}
       <Partnership onContactClick={() => handleScrollToSection('#contact')} />
 
-      {/* 7. Full Syllabus Programs Portfolio */}
-      <Programs onContactClick={() => handleScrollToSection('#contact')} />
-
-      {/* 8. Official Team Merchandise & Athletic Gear */}
+      {/* 7. Official Team Merchandise & Athletic Gear */}
       <Merchandise />
 
-      {/* 9. High-end Editorial Founders Narrative Story */}
+      {/* 8. High-end Editorial Founders Narrative Story */}
       <About />
 
-      {/* 11. Interactive Expression of Interest Form (Dark Cosmic Styling) */}
+      {/* 9. Interactive Expression of Interest Form (Dark Cosmic Styling) */}
       <RegisterInterestForm />
 
-      {/* 12. Location, Maps, Social Shortcuts & Direct Inquiries Desk */}
+      {/* 10. Location, Maps, Social Shortcuts & Direct Inquiries Desk */}
       <ContactSection />
 
-      {/* 13. Deep Dark Premium Footer */}
+      {/* 11. Deep Dark Premium Footer */}
       <Footer />
     </div>
   );

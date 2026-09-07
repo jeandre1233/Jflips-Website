@@ -60,11 +60,11 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2.5">
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="font-sans font-bold text-[11px] uppercase tracking-wider px-4 py-2 border-2 border-ink text-ink hover:bg-ink hover:text-chalk transition-colors duration-150"
+              className="font-sans font-semibold text-xs px-3.5 py-2 border border-ink text-ink hover:bg-ink hover:text-white transition-colors duration-150 rounded"
             >
               Get in touch
             </a>
@@ -72,7 +72,7 @@ export default function Header() {
               href={WHATSAPP_LINKS.cheer}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-mat hover:bg-mat-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-wider px-4 py-2 transition-colors duration-150"
+              className="bg-mat hover:bg-mat-deep text-white font-sans font-semibold text-xs px-3.5 py-2 transition-colors duration-150 rounded"
             >
               Cheer team
             </a>
@@ -80,7 +80,7 @@ export default function Header() {
               href={WHATSAPP_LINKS.tumbling}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-wider px-4 py-2 transition-colors duration-150"
+              className="bg-flame hover:bg-flame-deep text-white font-sans font-semibold text-xs px-3.5 py-2 transition-colors duration-150 rounded"
             >
               Tumbling
             </a>
@@ -100,8 +100,8 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-ink pt-24 px-8 pb-10 flex flex-col justify-between lg:hidden">
           <div className="flex flex-col gap-6">
-            <span className="font-mono text-xs text-chalk/40 uppercase tracking-widest border-b border-chalk/15 pb-3">
-              Menu
+            <span className="font-sans text-xs text-white/50 border-b border-white/10 pb-3 font-medium">
+              Navigation
             </span>
             <nav className="flex flex-col gap-5">
               {NAVIGATION_LINKS.map((link) => (
@@ -121,7 +121,7 @@ export default function Header() {
             <a
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="w-full text-center border-2 border-chalk/30 text-chalk font-sans font-semibold text-xs uppercase tracking-widest py-3"
+              className="w-full text-center border border-chalk/30 text-chalk font-sans font-semibold text-sm py-3 rounded"
             >
               Get in touch
             </a>
@@ -129,7 +129,7 @@ export default function Header() {
               href={WHATSAPP_LINKS.cheer}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full text-center bg-mat text-chalk font-sans font-semibold text-xs uppercase tracking-widest py-3"
+              className="w-full text-center bg-mat text-chalk font-sans font-semibold text-sm py-3 rounded"
             >
               Cheer team (WhatsApp)
             </a>
@@ -137,7 +137,7 @@ export default function Header() {
               href={WHATSAPP_LINKS.tumbling}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full text-center bg-flame text-chalk font-sans font-semibold text-xs uppercase tracking-widest py-3"
+              className="w-full text-center bg-flame text-chalk font-sans font-semibold text-sm py-3 rounded"
             >
               Tumbling (WhatsApp)
             </a>

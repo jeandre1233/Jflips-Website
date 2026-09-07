@@ -3,56 +3,55 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Quote, Award, Sparkles } from 'lucide-react';
+import { Award, Users } from 'lucide-react';
 import aboutImage from '../pictures/Image_4.jpeg';
 
 export default function About() {
   return (
-    <section className="py-24 md:py-32 bg-white text-ink relative border-b border-ink/5">
+    <section className="py-20 md:py-28 bg-white text-ink relative border-b border-zinc-200">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-        <div className="grid lg:grid-cols-12 gap-16 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-          {/* Left Column: Heading and High-Quality Coaching Photo */}
-          <div className="lg:col-span-5 flex flex-col gap-8 lg:sticky lg:top-28">
+          {/* Left Column: Heading and Coaching Photo */}
+          <div className="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-28">
             <div>
-              <span className="tag self-start">The JFLIPS story</span>
-              <h2 className="font-display font-extrabold text-4xl md:text-5xl tracking-tight text-ink mt-4 leading-tight">
+              <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-tight text-ink leading-tight">
                 Our passion for the sport
               </h2>
             </div>
 
-            {/* Premium Photo Slot */}
-            <div className="relative overflow-hidden border border-ink/10 shadow-md rounded group">
+            {/* Photo Slot */}
+            <div className="overflow-hidden border border-zinc-200 rounded shadow-xs bg-zinc-100">
               <img 
                 src={aboutImage} 
                 alt="Head coach spotting young athlete" 
-                className="w-full h-[320px] object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-[300px] object-cover"
                 referrerPolicy="no-referrer"
               />
             </div>
 
-            <div className="flex flex-col gap-6 mt-2">
-              <div className="flex items-start gap-4">
-                <div className="p-2.5 bg-chalk text-mat shrink-0">
-                  <Award className="w-5 h-5" />
+            <div className="flex flex-col gap-4 mt-2">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-zinc-100 text-mat shrink-0 rounded">
+                  <Award className="w-4 h-4" />
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-ink text-sm">Structured progressions</h4>
-                  <p className="font-sans text-xs text-ink/60 leading-relaxed mt-1">
+                  <p className="font-sans text-xs text-zinc-600 leading-relaxed mt-0.5">
                     A clear, safety-first syllabus that scales with each athlete.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="p-2.5 bg-chalk text-mat shrink-0">
-                  <Sparkles className="w-5 h-5" />
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-zinc-100 text-mat shrink-0 rounded">
+                  <Users className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-ink text-sm">Real mentorship</h4>
-                  <p className="font-sans text-xs text-ink/60 leading-relaxed mt-1">
-                    Helping kids build confidence, teamwork, and active habits that stick.
+                  <h4 className="font-display font-bold text-ink text-sm">Direct mentorship</h4>
+                  <p className="font-sans text-xs text-zinc-600 leading-relaxed mt-0.5">
+                    Building confidence, teamwork, and active athletic habits.
                   </p>
                 </div>
               </div>
@@ -60,39 +59,31 @@ export default function About() {
           </div>
 
           {/* Right Column: Narrative Content */}
-          <div className="lg:col-span-7 flex flex-col gap-8 font-sans text-ink/70 text-base md:text-lg leading-relaxed">
+          <div className="lg:col-span-7 flex flex-col gap-6 font-sans text-zinc-700 text-base leading-relaxed">
 
             <p className="text-xl md:text-2xl font-medium text-ink font-display tracking-tight leading-relaxed">
-              We wanted a space where young athletes of any skill level could push themselves,
-              learn to trust each other, and grow into confident people.
+              We built a space where athletes of any skill level can learn safely, trust their teammates, and develop real physical confidence.
             </p>
 
-            <p className="text-sm md:text-base">
-              JFLIPS started from a genuine love of competitive cheerleading and tumbling. It's a
-              demanding sport that teaches trust, coordination, and strength, yet there weren't
-              enough structured, safe opportunities for kids in our local schools to learn it properly.
+            <p className="text-sm md:text-base leading-relaxed">
+              JFLIPS started from hands-on dedication to competitive cheerleading and gymnastics tumbling. Cheer is a demanding athletic discipline combining coordination, power, and team accountability.
             </p>
 
-            <p className="text-sm md:text-base">
-              So we built a coaching programme that puts correct technique, safe progressions, and
-              individual growth first. Focused stunting and tumbling drills, paired with real
-              mentorship, help our athletes succeed as teammates on the mat and as leaders elsewhere.
+            <p className="text-sm md:text-base leading-relaxed">
+              Our training puts safe progression, foundational mechanics, and conditioning first. Every skill on the mat is broken down into drills so athletes understand the body control behind what they perform.
             </p>
 
-            <p className="text-sm md:text-base">
-              Cheerleading and tumbling have a real power to bring school communities together and
-              build lifelong habits. As we grow JFLIPS across Krugersdorp and the West Rand, our
-              commitment stays the same: help kids learn safely, support their teammates, and step
-              onto the mat with pride.
+            <p className="text-sm md:text-base leading-relaxed">
+              Whether preparing for national competitions or learning for the first time, we maintain standard safety protocols and dedicated coach supervision in every session.
             </p>
 
-            <div className="mt-8 border-t border-ink/10 pt-8 flex items-center justify-between text-sm">
+            <div className="mt-6 border-t border-zinc-200 pt-6 flex items-center justify-between text-sm">
               <div>
-                <span className="font-mono text-[10px] uppercase tracking-widest text-ink/40 block">Organization</span>
-                <span className="font-display font-bold text-ink text-sm">JFLIPS</span>
+                <span className="text-xs text-zinc-500 font-medium block">Organization</span>
+                <span className="font-display font-bold text-ink text-sm">JFLIPS Cheer &amp; Tumbling</span>
               </div>
               <div className="text-right">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-ink/40 block">Based in</span>
+                <span className="text-xs text-zinc-500 font-medium block">Based in</span>
                 <span className="font-display font-bold text-ink text-sm">Krugersdorp, South Africa</span>
               </div>
             </div>
