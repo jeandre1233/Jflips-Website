@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ArrowDown } from 'lucide-react';
-import { CHEER_REGISTRATION_URL, TUMBLING_REGISTRATION_URL } from '../lib/constants';
+import { ArrowDown, MessageCircle } from 'lucide-react';
+import { WHATSAPP_LINKS } from '../lib/constants';
 import InteractiveBg from './InteractiveBg';
 import JFlipsLogo from './JFlipsLogo';
 
@@ -53,7 +53,7 @@ export default function Hero({ onSchoolsClick, onRegisterClick }: HeroProps) {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
             {/* Darker blue button with the premium starry effect */}
             <a
-              href={CHEER_REGISTRATION_URL}
+              href={WHATSAPP_LINKS.cheer}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative overflow-hidden flex items-center justify-center gap-2 bg-mat hover:bg-mat-deep text-chalk font-sans font-bold text-xs uppercase tracking-widest px-8 py-4 transition-all duration-150 border border-flame/30 shadow-[0_0_20px_rgba(0,168,255,0.15)]"
@@ -62,17 +62,19 @@ export default function Hero({ onSchoolsClick, onRegisterClick }: HeroProps) {
               <SparkleStar className="top-1 left-3 w-2.5 h-2.5 text-chalk/40 animate-pulse [animation-duration:1.5s]" />
               <SparkleStar className="bottom-1.5 right-4 w-2 h-2 text-chalk/30 animate-pulse [animation-duration:3s]" />
               <SparkleStar className="top-3 right-2 w-1.5 h-1.5 text-chalk/50" />
-              <span className="relative z-10">Register for cheer</span>
+              <MessageCircle className="w-4 h-4 text-chalk/80 relative z-10" />
+              <span className="relative z-10">Cheer team</span>
             </a>
 
             {/* Light blue stripe color button */}
             <a
-              href={TUMBLING_REGISTRATION_URL}
+              href={WHATSAPP_LINKS.tumbling}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-xs uppercase tracking-widest px-8 py-4 transition-colors duration-150 shadow-[0_0_20px_rgba(0,168,255,0.25)]"
             >
-              Register for tumbling
+              <MessageCircle className="w-4 h-4 text-chalk/80" />
+              <span>Tumbling classes</span>
             </a>
           </div>
         </div>

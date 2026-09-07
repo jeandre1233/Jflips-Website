@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Mail, Phone, MapPin, Instagram, Facebook, ArrowUp } from 'lucide-react';
-import { CONTACT_INFO, NAVIGATION_LINKS } from '../lib/constants';
+import { Mail, Phone, MapPin, Instagram, Facebook, ArrowUp, MessageCircle } from 'lucide-react';
+import { CONTACT_INFO, NAVIGATION_LINKS, WHATSAPP_LINKS } from '../lib/constants';
 import JFlipsLogo from './JFlipsLogo';
 
 export default function Footer() {
@@ -89,9 +89,14 @@ export default function Footer() {
                 </a>
               </div>
               <div className="flex items-center gap-2 text-chalk/50">
-                <Phone className="w-4 h-4 text-mat shrink-0" />
-                <a href={`tel:${CONTACT_INFO.phone}`} className="hover:text-chalk transition-colors">
-                  {CONTACT_INFO.phoneFormatted}
+                <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                <a
+                  href={WHATSAPP_LINKS.general}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-chalk transition-colors"
+                >
+                  {CONTACT_INFO.phoneFormatted} (WhatsApp)
                 </a>
               </div>
               <div className="flex items-center gap-2 text-chalk/50">

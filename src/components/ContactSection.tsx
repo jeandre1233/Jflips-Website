@@ -5,7 +5,7 @@
 
 import { useState, useEffect, FormEvent } from 'react';
 import { Phone, Mail, MapPin, Instagram, Facebook, Send, CheckCircle2, MessageCircle, AlertCircle } from 'lucide-react';
-import { CONTACT_INFO } from '../lib/constants';
+import { CONTACT_INFO, WHATSAPP_LINKS } from '../lib/constants';
 import { sendContactFormNotification } from '../lib/notifications';
 
 export default function ContactSection() {
@@ -70,7 +70,7 @@ export default function ContactSection() {
     <section id="contact" className="py-24 md:py-32 bg-chalk text-ink scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-        <div className="max-w-2xl mb-20">
+        <div className="max-w-2xl mb-12">
           <span className="tag">Contact</span>
           <h2 className="font-display font-extrabold text-4xl md:text-5xl tracking-tight mt-4 text-ink">
             Get in touch
@@ -81,21 +81,59 @@ export default function ContactSection() {
           </p>
         </div>
 
+        {/* Direct WhatsApp Callout Banner */}
+        <div className="mb-14 p-6 md:p-8 bg-emerald-50 border-2 border-emerald-500/30 rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 bg-[#25D366] text-white rounded-full flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+              <MessageCircle className="w-6 h-6 fill-current" />
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-2 mb-1.5">
+                <span className="font-mono text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 bg-[#25D366]/20 text-emerald-800 rounded">
+                  Fastest Option
+                </span>
+                <span className="text-xs text-ink/60 font-medium">WhatsApp Coach Jeandré</span>
+              </div>
+              <h3 className="font-display font-bold text-xl md:text-2xl text-ink">
+                Prefer WhatsApp? Send us a direct message
+              </h3>
+              <p className="font-sans text-xs md:text-sm text-ink/75 mt-1 max-w-xl leading-relaxed">
+                Click to open WhatsApp with a pre-filled note: <span className="font-semibold text-ink">"Hi, I saw your website. I have a couple of questions."</span>
+              </p>
+            </div>
+          </div>
+
+          <a
+            href={WHATSAPP_LINKS.general}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full md:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-[#25D366] hover:bg-[#1faa4b] text-white font-sans font-bold text-xs uppercase tracking-widest rounded transition-colors shadow-sm shrink-0"
+          >
+            <MessageCircle className="w-4 h-4 fill-current" />
+            <span>Chat on WhatsApp</span>
+          </a>
+        </div>
+
         <div className="grid lg:grid-cols-12 gap-12 md:gap-16 items-start">
 
           <div className="lg:col-span-5 flex flex-col gap-4">
 
             <a
-              href={`tel:${CONTACT_INFO.phone}`}
-              className="flex items-center gap-4 p-6 bg-white border-2 border-ink/10 hover:border-mat transition-colors duration-150 group"
+              href={WHATSAPP_LINKS.general}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-6 bg-white border-2 border-ink/10 hover:border-[#25D366] transition-colors duration-150 group"
             >
-              <div className="w-11 h-11 bg-chalk text-mat flex items-center justify-center group-hover:bg-mat group-hover:text-chalk transition-colors duration-150 shrink-0">
-                <Phone className="w-5 h-5" />
+              <div className="w-11 h-11 bg-emerald-50 text-[#25D366] flex items-center justify-center group-hover:bg-[#25D366] group-hover:text-white transition-colors duration-150 shrink-0">
+                <MessageCircle className="w-5 h-5 fill-current" />
               </div>
               <div>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-ink/40 block mb-0.5">Phone / WhatsApp</span>
-                <span className="font-display font-bold text-ink group-hover:text-mat transition-colors text-base">
+                <span className="font-mono text-[9px] uppercase tracking-widest text-ink/40 block mb-0.5">WhatsApp / Call</span>
+                <span className="font-display font-bold text-ink group-hover:text-emerald-700 transition-colors text-base">
                   {CONTACT_INFO.phoneFormatted}
+                </span>
+                <span className="block text-[11px] text-[#25D366] font-medium mt-0.5">
+                  Tap to chat on WhatsApp &rarr;
                 </span>
               </div>
             </a>
@@ -153,9 +191,20 @@ export default function ContactSection() {
           <div className="lg:col-span-7 bg-white p-8 md:p-10 border-2 border-ink/10 relative">
             {!isSuccess ? (
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                <h3 className="font-display font-bold text-xl text-ink border-b-2 border-ink/10 pb-3">
-                  Send a message
-                </h3>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-ink/10 pb-3 gap-2">
+                  <h3 className="font-display font-bold text-xl text-ink">
+                    Send a message
+                  </h3>
+                  <a
+                    href={WHATSAPP_LINKS.general}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span>Or chat on WhatsApp instead</span>
+                  </a>
+                </div>
 
                 <div className="flex flex-col gap-2">
                   <label className="font-mono text-[10px] uppercase tracking-widest text-ink/40" htmlFor="contactName">

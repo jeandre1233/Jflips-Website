@@ -3,17 +3,28 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-export const CHEER_REGISTRATION_URL = "https://jflips.vercel.app/#/signup-cheer?ownerId=95c19d4f-787a-4c68-9a2d-b599cd87ffd9";
-export const TUMBLING_REGISTRATION_URL = "https://jflips.vercel.app/#/signup?ownerId=95c19d4f-787a-4c68-9a2d-b599cd87ffd9";
-
 export const CONTACT_INFO = {
   phone: "0690403387",
   phoneFormatted: "+27 69 040 3387",
   email: "JFlipsInc@gmail.com",
   location: "Krugersdorp, South Africa",
   address: "Krugersdorp, Gauteng, South Africa",
-  instagram: "https://www.instagram.com/jflipsinc/", // placeholder - easily customizable
-  facebook: "https://web.facebook.com/profile.php?id=61591986964463", // placeholder - easily customizable
+  instagram: "https://www.instagram.com/jflipsinc/",
+  facebook: "https://www.facebook.com/profile.php?id=61591746614959",
+};
+
+export const WHATSAPP_MESSAGES = {
+  general: "Hi, I saw your website. I have a couple of questions.",
+  cheer: "Hi, I saw your website. I'm interested in joining the cheerleading team.",
+  tumbling: "Hi, I saw your website. I'm interested in joining your tumbling classes.",
+};
+
+const COACH_WHATSAPP_NUMBER = "27690403387";
+
+export const WHATSAPP_LINKS = {
+  general: `https://wa.me/${COACH_WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGES.general)}`,
+  cheer: `https://wa.me/${COACH_WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGES.cheer)}`,
+  tumbling: `https://wa.me/${COACH_WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGES.tumbling)}`,
 };
 
 export const NAVIGATION_LINKS = [

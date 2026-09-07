@@ -32,7 +32,7 @@ export default function SEO() {
         },
         'sameAs': [
           'https://www.instagram.com/jflipsinc/',
-          'https://web.facebook.com/profile.php?id=61591986964463'
+          'https://www.facebook.com/profile.php?id=61591746614959'
         ],
         'foundingDate': '2022',
         'knowsAbout': ['Cheerleading Coaching', 'Tumbling Training', 'Athletic Development', 'Confidence and Teamwork Development']

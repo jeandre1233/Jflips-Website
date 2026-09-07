@@ -5,7 +5,7 @@
 
 import { useState, useEffect, MouseEvent } from 'react';
 import { Menu, X } from 'lucide-react';
-import { CHEER_REGISTRATION_URL, TUMBLING_REGISTRATION_URL, NAVIGATION_LINKS } from '../lib/constants';
+import { WHATSAPP_LINKS, NAVIGATION_LINKS } from '../lib/constants';
 import JFlipsLogo from './JFlipsLogo';
 
 export default function Header() {
@@ -69,7 +69,7 @@ export default function Header() {
               Get in touch
             </a>
             <a
-              href={CHEER_REGISTRATION_URL}
+              href={WHATSAPP_LINKS.cheer}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-mat hover:bg-mat-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-wider px-4 py-2 transition-colors duration-150"
@@ -77,7 +77,7 @@ export default function Header() {
               Cheer team
             </a>
             <a
-              href={TUMBLING_REGISTRATION_URL}
+              href={WHATSAPP_LINKS.tumbling}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-wider px-4 py-2 transition-colors duration-150"
@@ -126,20 +126,20 @@ export default function Header() {
               Get in touch
             </a>
             <a
-              href={CHEER_REGISTRATION_URL}
+              href={WHATSAPP_LINKS.cheer}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full text-center bg-mat text-chalk font-sans font-semibold text-xs uppercase tracking-widest py-3"
             >
-              Register for cheer team
+              Cheer team (WhatsApp)
             </a>
             <a
-              href={TUMBLING_REGISTRATION_URL}
+              href={WHATSAPP_LINKS.tumbling}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full text-center bg-flame text-chalk font-sans font-semibold text-xs uppercase tracking-widest py-3"
             >
-              Register for tumbling
+              Tumbling (WhatsApp)
             </a>
           </div>
         </div>

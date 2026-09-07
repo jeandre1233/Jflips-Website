@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Calendar, Clock, MapPin, DollarSign, Download, ArrowUpRight, Sparkles } from 'lucide-react';
-import { TUMBLING_REGISTRATION_URL } from '../lib/constants';
+import { Calendar, Clock, MapPin, DollarSign, Download, ArrowUpRight, Sparkles, MessageCircle } from 'lucide-react';
+import { WHATSAPP_LINKS } from '../lib/constants';
 
 export default function TumblingSchedule() {
   return (
@@ -26,12 +26,13 @@ export default function TumblingSchedule() {
 
           <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
             <a
-              href={TUMBLING_REGISTRATION_URL}
+              href={WHATSAPP_LINKS.tumbling}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-xs uppercase tracking-widest px-6 py-3.5 transition-colors duration-150 rounded"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-xs uppercase tracking-widest px-6 py-3.5 transition-colors duration-150 rounded shadow-sm"
             >
-              Register for Tumbling
+              <MessageCircle className="w-4 h-4" />
+              Join via WhatsApp
               <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
@@ -139,12 +140,13 @@ export default function TumblingSchedule() {
             </div>
 
             <a
-              href={TUMBLING_REGISTRATION_URL}
+              href={WHATSAPP_LINKS.tumbling}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 w-full text-center bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-xs uppercase tracking-widest py-3.5 rounded transition-colors flex items-center justify-center gap-2"
+              className="mt-6 w-full text-center bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-xs uppercase tracking-widest py-3.5 rounded transition-colors flex items-center justify-center gap-2 shadow-sm"
             >
-              Sign Up For Tumbling
+              <MessageCircle className="w-4 h-4" />
+              Join Tumbling Classes on WhatsApp
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>

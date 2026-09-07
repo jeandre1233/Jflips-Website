@@ -3,10 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ArrowUpRight, CheckCircle2, FileText, MapPin, Calendar, DollarSign } from 'lucide-react';
-import { CHEER_REGISTRATION_URL, TUMBLING_REGISTRATION_URL } from '../lib/constants';
-import cheerQrCode from '../pictures/C_REG.png';
-import tumblingQrCode from '../pictures/T_REG.png';
+import { ArrowUpRight, CheckCircle2, FileText, MapPin, Calendar, DollarSign, MessageCircle } from 'lucide-react';
+import { WHATSAPP_LINKS } from '../lib/constants';
 
 export default function RegisterInterestForm() {
   return (
@@ -17,13 +15,13 @@ export default function RegisterInterestForm() {
         <div className="grid lg:grid-cols-12 gap-16 items-start">
 
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <span className="tag tag-flame self-start">Register</span>
+            <span className="tag tag-flame self-start">Get Connected</span>
             <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight text-chalk leading-none">
-              Secure your athlete's slot
+              Connect with Coach Jeandré
             </h2>
-            <p className="font-sans text-chalk/60 text-base leading-relaxed">
-              Register directly through the portals on the right for either our competitive
-              cheerleading team or our precision tumbling classes.
+            <p className="font-sans text-chalk/70 text-base leading-relaxed">
+              We connect directly with every parent and athlete before enrollment. Tap either option
+              on the right to start a WhatsApp chat with Coach Jeandré with your team or class preference pre-filled.
             </p>
 
             <div className="p-6 bg-chalk/5 border border-chalk/10 mt-4 flex items-start gap-4">
@@ -31,10 +29,10 @@ export default function RegisterInterestForm() {
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-display font-bold text-sm text-chalk mb-1">What happens next</h4>
+                <h4 className="font-display font-bold text-sm text-chalk mb-1">Personalized onboarding</h4>
                 <p className="text-xs text-chalk/60 leading-relaxed">
-                  Once you register, you'll get our full schedule, kit requirements, and coaching
-                  assignment by email.
+                  We'll discuss your athlete's skill level, trial class schedules, gear requirements,
+                  and answer all your questions directly on WhatsApp.
                 </p>
               </div>
             </div>
@@ -50,30 +48,15 @@ export default function RegisterInterestForm() {
                   Level 1–4 stunting taught safely.
                 </p>
               </div>
-              <div className="flex flex-col gap-5 mt-4">
-                {/* QR Code Container */}
-                <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded">
-                  <div className="bg-white p-1 rounded shrink-0">
-                    <img 
-                      src={cheerQrCode} 
-                      alt="Register for the Cheerleading Team QR Code" 
-                      className="w-16 h-16 object-contain"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-bold text-xs text-chalk">Scan to register</h4>
-                    <p className="text-[10px] text-chalk/45 font-mono uppercase mt-0.5 tracking-wider">On mobile or tablet</p>
-                  </div>
-                </div>
-
+              <div className="flex flex-col gap-4 mt-4">
                 <a
-                  href={CHEER_REGISTRATION_URL}
+                  href={WHATSAPP_LINKS.cheer}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center bg-mat hover:bg-mat-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-colors duration-150"
+                  className="w-full text-center bg-mat hover:bg-mat-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-colors duration-150 rounded"
                 >
-                  Register for the Cheerleading Team
+                  <MessageCircle className="w-4 h-4" />
+                  Join Cheer on WhatsApp
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -110,29 +93,14 @@ export default function RegisterInterestForm() {
               </div>
 
               <div className="flex flex-col gap-3 mt-4">
-                {/* QR Code Container */}
-                <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded">
-                  <div className="bg-white p-1 rounded shrink-0">
-                    <img 
-                      src={tumblingQrCode} 
-                      alt="Register for the Tumbling Team QR Code" 
-                      className="w-16 h-16 object-contain"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-bold text-xs text-chalk">Scan to register</h4>
-                    <p className="text-[10px] text-chalk/45 font-mono uppercase mt-0.5 tracking-wider">On mobile or tablet</p>
-                  </div>
-                </div>
-
                 <a
-                  href={TUMBLING_REGISTRATION_URL}
+                  href={WHATSAPP_LINKS.tumbling}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-colors duration-150"
+                  className="w-full text-center bg-flame hover:bg-flame-deep text-chalk font-sans font-bold text-[11px] uppercase tracking-widest py-3.5 flex items-center justify-center gap-2 transition-colors duration-150 rounded"
                 >
-                  Register for Tumbling
+                  <MessageCircle className="w-4 h-4" />
+                  Join Tumbling on WhatsApp
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
 
