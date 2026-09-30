@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Target, Crown, HeartHandshake, Users, Dumbbell } from 'lucide-react';
+import { Crown, HeartHandshake, Users, Dumbbell } from 'lucide-react';
 import { ValueCard } from '../types';
-import missionImage from '../pictures/Image_1.jpeg';
+import PhoneFrame from './PhoneFrame';
 
 const VALUES: ValueCard[] = [
   {
@@ -40,53 +40,50 @@ export default function Mission() {
   return (
     <section id="about" className="py-20 md:py-28 bg-white text-ink border-t border-zinc-200">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Phone Frame Video Showcase */}
+          <div className="lg:col-span-5 flex justify-center">
+            <PhoneFrame videoSrc="/phone.mp4" />
+          </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
-          <div className="lg:col-span-6 flex flex-col gap-5">
+          {/* Right Column: Heading, Narrative, and Value Cards */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
             <h2 className="font-display font-extrabold text-4xl md:text-5xl tracking-tight text-ink leading-tight">
               Confidence, built on the mat
             </h2>
-            <p className="font-sans text-lg text-ink/75 leading-relaxed">
+
+            <p className="font-sans text-lg text-ink/75 leading-relaxed mt-5">
               JFLIPS gives young athletes a safe, structured space to master stunting and tumbling,
               built on respect and good sportsmanship. Athletes gain real confidence,
               discipline, and teamwork that carries far beyond the gym.
             </p>
-          </div>
-          <div className="lg:col-span-6">
-            <div className="overflow-hidden border border-zinc-200 rounded">
-              <img
-                src={missionImage}
-                alt="JFLIPS athletes training"
-                className="w-full h-[320px] md:h-[380px] object-cover"
-                referrerPolicy="no-referrer"
-              />
+
+            {/* Core Values 2x2 Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-8 border-t border-zinc-200">
+              {VALUES.map((val) => {
+                const IconComp = iconMap[val.iconName] || Crown;
+                return (
+                  <div
+                    key={val.id}
+                    className="flex flex-col gap-2.5 p-5 bg-[#f8f9fa] border border-zinc-200 rounded"
+                  >
+                    <div className="w-8 h-8 bg-white border border-zinc-200 text-mat flex items-center justify-center rounded">
+                      <IconComp className="w-4 h-4" />
+                    </div>
+                    <h3 className="font-display font-bold text-sm text-ink tracking-tight">
+                      {val.title}
+                    </h3>
+                    <p className="font-sans text-xs text-ink/70 leading-relaxed">
+                      {val.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
-        </div>
 
-        {/* Athletic pillars */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-10 border-t border-zinc-200">
-          {VALUES.map((val) => {
-            const IconComp = iconMap[val.iconName] || Crown;
-            return (
-              <div
-                key={val.id}
-                className="flex flex-col gap-3 p-5 bg-[#f8f9fa] border border-zinc-200 rounded"
-              >
-                <div className="w-9 h-9 bg-white border border-zinc-200 text-mat flex items-center justify-center rounded">
-                  <IconComp className="w-4 h-4" />
-                </div>
-                <h3 className="font-display font-bold text-base text-ink tracking-tight">
-                  {val.title}
-                </h3>
-                <p className="font-sans text-xs text-ink/70 leading-relaxed">
-                  {val.description}
-                </p>
-              </div>
-            );
-          })}
         </div>
-
       </div>
     </section>
   );
