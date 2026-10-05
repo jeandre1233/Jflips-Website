@@ -31,7 +31,7 @@ export default function SEO() {
           'addressCountry': 'ZA'
         },
         'sameAs': [
-          'https://www.instagram.com/jflipsinc/',
+          'https://www.instagram.com/jflipscheer/',
           'https://www.facebook.com/profile.php?id=61591746614959'
         ],
         'foundingDate': '2022',

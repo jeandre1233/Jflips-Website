@@ -9,7 +9,7 @@ export const CONTACT_INFO = {
   email: "JFlipsInc@gmail.com",
   location: "Krugersdorp, South Africa",
   address: "Krugersdorp, Gauteng, South Africa",
-  instagram: "https://www.instagram.com/jflipsinc/",
+  instagram: "https://www.instagram.com/jflipscheer/",
   facebook: "https://www.facebook.com/profile.php?id=61591746614959",
 };
 
